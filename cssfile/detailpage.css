@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* body {
+    background-image: linear-gradient(to right, lightblue, #666262);
+} */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 4px 20px hsla(207, 24%, 35%, 0.1);
+    background: linear-gradient(-170deg, rgb(27, 70, 136) 19%, rgb(73, 184, 197) 100%);
+
+    z-index: 1;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+}
+
+.logo h6 {
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu a {
+    display: block;
+    padding: 7px 15px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.2s all ease-in-out;
+    color: #fff;
+}
+
+.menu:hover a {
+    opacity: 0.4;
+}
+
+.menu a:hover {
+    opacity: 1;
+    color: #fff;
+}
+
+.menu-icon {
+    display: none;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+#menu-toggle:checked ~ .menu {
+    transform: scale(1, 1);
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 4px 20px hsla(207, 24%, 35%, 0.1);
+    border-radius: 5px;
+    top: 50px;
+    right: 0;
+    z-index: 1;
+}
+
+.dropdown a {
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li.active .dropdown {
+    display: block;
+}
+
+@media only screen and (max-width: 950px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .menu {
+        flex-direction: column;
+        background-color: #fff;
+        align-items: start;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        transform: scale(1, 0);
+        transform-origin: top;
+        transition: transform 0.3s ease-in-out;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+
+    .menu a {
+        margin-left: 12px;
+    }
+
+    .menu li {
+        margin-bottom: 10px;
+    }
+
+    .menu-icon {
+        display: block;
+        color: #fff;
+        font-size: 28px;
+        cursor: pointer;
+    }
+    .bi-translate{
+      background: linear-gradient(-170deg, rgb(27, 70, 136) 19%, rgb(73, 184, 197) 100%);
+
+    }
+}
+.image-census{
+    width: 180px;
+    height:80px;
+}
