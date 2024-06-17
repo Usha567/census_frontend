@@ -224,11 +224,12 @@
                         <div class="row mt-3">
                             <div class="col-12  text-center">
                                 <div class="button-group mt-2">
-                                    <button class="bg-info mt-1" data-key="search_button" onclick="searchdata()">Search</button>
-                                    <button class="bg-info mt-1" data-key="reset_button" onclick="resetdata()">Reset</button>
+                                    <button class="bg-info mt-1" data-key="search_button">Search</button>
+                                    <button class="bg-info mt-1" data-key="reset_button">Reset</button>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="table-responsive mt-4">
                         <table id="example" class="table table-striped bg-info table-hover table-bordered dataTable no-footer" width="100%">
@@ -258,19 +259,10 @@
             </div>
         </div>
     </div>
-    <div class="container mt-2 pb-5 text-end">
-        <div>
-            <a href="other_cast_data.php" class="text-decoration-none text-dark">Other Cast <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                </svg>
-            </a>
-        </div>
-    </div>
-
 </body>
 </html>
 
-<!-- <script>
+<script>
     const menubtn = document.querySelector(".menubtn");
 const closebtn = document.querySelector(".closebtn");
 
@@ -283,7 +275,7 @@ closebtn.onclick = () => {
     closebtn.style.display = "none"
     menubtn.style.display = "block"
 }
-    </script> -->
+    </script>
 
 <script>
 $(document).ready(function() {
@@ -373,7 +365,6 @@ $(document).ready(function() {
         }
     });
 });
-
 </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

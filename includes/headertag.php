@@ -1,6 +1,6 @@
 <?php
 //  $baseUrl = '/tractor-project/tractor-project/';
-// $APIBaseURL = 'http://192.168.1.21:8000/api/admin/';
+$APIBaseURL = 'http://192.168.1.10:8000/spi/';
 // $CustomerAPIBaseURL = 'http://192.168.1.21:8000/api/customer/';
 // $baseUrl = '/tractor_house/';
 ?>
@@ -22,4 +22,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 	

@@ -1,0 +1,99 @@
+
+.container__menu {
+    font-size: 1.2rem;
+    animation: fold 1s linear 0s 1;
+}
+
+.container__menu a {
+    text-decoration: none;
+    color: #000;
+    padding: 1rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    text-shadow: 0 0 1px #000;
+    animation: fold 1s linear 0s 1;
+}
+
+.menubtn {
+    display: none;
+    color: #000;
+    padding: 0.5rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-size: 1.6rem;
+}
+
+.closebtn {
+    display: none;
+    color: #000;
+    padding: 0.5rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-size: 1.6rem;
+}
+
+.container__menu a::selection {
+    color: red;
+}
+
+@keyframes fold {
+    from {
+        transform: skew(10deg);
+        color: green;
+        background-color: #000;
+    }
+
+    to {
+        transform: skew(160deg);
+    }
+}
+
+@media (max-width: 618px) {
+    .container__menu {
+        display: none;
+    }
+
+    .menubtn {
+        display: block;
+    }
+}
+@media (min-width: 620px) {
+
+    .menubtn {
+        display: none;
+    }
+}
+ /* Dropdown container */
+ .language-dropdown{
+    margin: 1px;
+    padding: 1px;
+    border:none;
+ }
+  .button-group button {
+    margin: 0 5px;
+    padding: 6px 20px;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.search-box {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .search-box label {
+            margin-bottom: 5px;
+        }
+        .search-input-field {
+            width: 100%;
+            padding: 2px;
+            box-sizing: border-box;
+        }
+        .search-box input {
+            margin-bottom: -10px;
+        }
+        .seachbox{
+            margin:52px;
+            padding: 5px;
+        }

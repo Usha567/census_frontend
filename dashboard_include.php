@@ -1,6 +1,5 @@
 <?php
-    include 'adminpanel.php';
-    include 'includes/headertag.php';
+    include 'dash.php';
    ?>
 
 <style>
@@ -40,7 +39,7 @@
     font-weight: bold;
 } */
 </style>
-<section style="margin-left:250px;">
+<section >
     <div class="container-fluid">
         <div class="filter-card shadow mt-5">
             <div class="card">
