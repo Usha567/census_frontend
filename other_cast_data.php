@@ -1,5 +1,6 @@
 <?php
     include 'includes/headertag.php';
+    include 'includes/headerjs.php';
    ?>
 
 <!DOCTYPE html>
@@ -9,16 +10,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search and View Detailed Family Information</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="http://localhost:8080\census_project\cssfile\detailpage.css">
-
+    <script src="http://localhost:8080/census_project\jsfile\other_cast_data.js"></script> 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
   
 </head>
+<!-- <style>#google_translate_element,.skiptranslate{display:none;}body{top:0!important;}</style> -->
 <style>
 
-
+.goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon {
+      display: none !important;
+    }
+    .VIpgJd-ZVi9od-ORHb {
+  display: none !important;
+}
 .container__menu {
     font-size: 1.2rem;
     animation: fold 1s linear 0s 1;
@@ -117,142 +125,287 @@
             margin:52px;
             padding: 5px;
         }
+        #OtherState {
+    width: 100%; /* Makes the dropdown match the width of its container */
+}
+.total-box {
+            position: relative;
+        }
+
+        .total-input-field {
+            -webkit-appearance: none; /* Safari and Chrome */
+            -moz-appearance: none; /* Firefox */
+            appearance: none; /* Standard */
+            border: none;
+            background: none;
+            font-size: 16px;
+            color: black;
+            padding-right: 20px; /* Add some padding to the right for the arrow */
+        }
+
+        .total-input-field:focus {
+            outline: none; /* Remove focus outline */
+        }
+
+        .total-input-field::placeholder {
+            color: black; /* Placeholder text color */
+        }
+
+        /* Add a custom arrow using CSS */
+        .total-box::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid black;
+            pointer-events: none;
+        }
 </style>
 <body>
 <header class="header">
     <nav>
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
-        <div class="logo">
+        <div class="logo ">
             <h6 class="fw-bold text-white">"छीपा समाज शिक्षा और कैरियर" ग्रुप</h6>
             <h6 class="fw-bold text-white">छीपा (क्षत्रिय) समाज की जनगणना, वर्ष - 2024</h6>
             <h6 class="fw-bold text-white">(परिवार परिचय - पत्र)</h6>
         </div>
-        <ul class="menu">
-            <li>
-                <a href="#" id="translate-icon" onclick="toggleDropdown()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-translate" viewBox="0 0 16 16">
-                        <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z"/>
-                        <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31"/>
-                    </svg>
-                </a>
-                <div class="dropdown" id="translate-dropdown" style="display: none;">
-                    <a href="#" class="text-dark">हिंदी</a>
-                    <a href="#" class="text-dark">English</a>
-                </div>
-            </li>
-        </ul>
+        <div id="google_translate_element" class="mt-3"></div>
     </nav>
+    <div class="bg-white p-3 ">
+        <h6 class="text-center">छीपा समाज शिक्षा और कैरियर" ग्रुप आपका हार्दिक स्वागत करता है |</h6>
+    </div>
 </header>
 
 
     <div class="container mt-4"></div>
-    <!-- Language toggle -->
-    <!-- <div class="container-fluid text-right">
-      <div class="dropdown mt-3">
-        <button class="bg-info">Select Language <i class="fas fa-caret-down"></i></button>
-        <div class="dropdown-content text-center">
-          <a href="#" onclick="setLanguage('en')">English</a>
-          <a href="#" onclick="setLanguage('hi')">Hindi</a>
-        </div>
-      </div>
-    </div> -->
-
+  
     <!-- Search Form -->
     <div class="container-fluid pb-5">
         <div class="filter-card shadow mt-5">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="text-center  fw-blod main-heading" data-key="detailed_family_information">Detailed Family Information</h3>
-                    <div class="seachbox">
-                        <div class="row">
-                            <div class="col-12 col-lg-3 col-md-3 col-sm-6">
-                                <div class="search-box">
-                                    <label for="Name" class="text-black fs-6" data-key="search_label">Name:</label>
-                                    <input type="text" id="Name" class="control-form search-input-field" placeholder="Search Name">
+                    <div class="row">
+                        <div class="col-12 col-lg-4 col-md-4 col-sm-4"></div>
+                        <div class="col-12 col-lg-4 col-md-4 col-sm-4">
+                            <h3>विस्तृत पारिवारिक जानकारी</h3>
+                        </div>
+                        <div class="col-12 col-lg-4 col-md-4 col-sm-4">
+                            <div class="total-box w-75 text-end">
+                                <!-- <label for="totalcensusdata" class="text-black fs-6" data-key="total_label">Total Census Data</label> -->
+                                <div id="totalcensusdata" class="d-flex align-items-start flex-column w-100">
+                                <select id="total_census_data" class="form-select">
+                                    <!-- Options will be populated here -->
+                                </select>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-3 col-md-3 col-sm-6">
+                        </div>
+                     </div>
+                    <!-- <h3 class="text-center  fw-blod main-heading" data-key="detailed_family_information">Detailed Family Information</h3> -->
+                    <div class="seachbox ">
+                        <div class="row ">
+                            <div class="col-12 col-lg-2 col-md-2 col-sm-6">
                                 <div class="search-box">
-                                    <label for="number" class="text-black fs-6" data-key="search_label">Mobile No.:</label>
-                                    <input type="text" id="number" class="control-form search-input-field" placeholder="Search number">
+                                    <label for="Name" class="text-black fs-6" data-key="search_label">नाम:</label>
+                                    <input type="text" id="customerName" class="control-form search-input-field" placeholder="सर्च नाम">
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-3 col-md-3 col-sm-6">
+                            <div class="col-12 col-lg-2 col-md-2 col-sm-6">
                                 <div class="search-box">
-                                    <label for="Age" class="text-black fs-6" data-key="search_label">Age Range:</label>
+                                    <label for="number" class="text-black fs-6" data-key="search_label">मोबाइल नंबर:</label>
+                                    <input type="text" id="number" class="control-form search-input-field" placeholder="सर्च मोबाइल नंबर">
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-2 col-md-2 col-sm-6">
+                                <div class="search-box">
+                                    <label for="Age" class="text-black fs-6" data-key="search_label">आयु सीमा:</label>
                                     <div class="d-flex align-items-center">
-                                        <input type="text" id="minAge" class="control-form search-input-field me-1" placeholder="Min Age">
+                                        <input type="text" id="minAge" class="control-form search-input-field me-1" placeholder="न्यूनतम आयु">
                                         <span class="mx-1">-</span>
-                                        <input type="text" id="maxAge" class="control-form search-input-field" placeholder="Max Age">
+                                        <input type="text" id="maxAge" class="control-form search-input-field" placeholder="अधिकतम आयु">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-lg-3 col-md-3 col-sm-6">
                                 <div class="search-box">
-                                    <label for="State" class="text-black fs-6" data-key="search_label">State:</label>
-                                    <input type="text" id="State" class="control-form search-input-field" placeholder="Search State">
+                                    <label for="State" class="text-black fs-6" data-key="search_label">अन्य राज्य:</label>
+                                    <div id="stateContainer" class="d-flex align-items-start flex-column">
+                                        <select id="State" class="control-form search-input-field pb-2">
+                                            <option value="">अन्य राज्य चुने</option>
+                                            <!-- Options will be dynamically added here -->
+                                        </select>
+                                        <div id="otherStateInput" style="display: none; margin-top: 10px;">
+                                            <label for="OtherState" class="text-black fs-6" data-key="search_label">अन्य राज्य:</label>
+                                            <select id="OtherState" class="control-form search-input-field pb-2 text-black">
+                                                <option value="">अन्य राज्य </option>
+                                                <!-- Options will be dynamically added here -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3 col-md-3 col-sm-6">
+                                <div class="search-box">
+                                    <label for="District" class="text-black fs-6" data-key="search_label">अन्य ज़िला:</label>
+                                    <div id="districtContainer" class="d-flex align-items-start flex-column">
+                                        <select id="District" class="control-form search-input-field pb-2">
+                                            <option value="">अन्य ज़िला चुने</option>
+                                        </select>
+                                        <div id="otherDistrictInput" style="display: none; margin-top: 10px;">
+                                            <label for="OtherDistrict" class="text-black fs-6" data-key="search_label">अन्य ज़िला:</label>
+                                            <select id="OtherDistrict" class="control-form search-input-field pb-2">
+                                                <option value="">अन्य ज़िला</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-12 col-lg-3 col-md-3 col-sm-6">
+                            <div class="col-12 col-lg-2 col-md-2 col-sm-6">
                                 <div class="search-box">
-                                    <label for="District" class="text-black fs-6" data-key="search_label">District:</label>
-                                    <input type="text" id="District" class="control-form search-input-field" placeholder="Search District">
+                                    <label for="Status" class="text-black fs-6" data-key="search_label">वैवाहिक स्थिति:</label>
+                                            <select class="form-control" id="Status">
+                                                <option selected disabled value>वैवाहिक स्थिति चुने</option>
+                                                <option>सामान्य</option>
+                                                <option>विदुर</option>
+                                                <option>तलाकशुदा</option>
+                                                <option>परित्याग</option>
+                                                <option>छोड़ छुट्टी</option>
+                                            </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-2 col-md-2 col-sm-6">
+                                <div class="search-box">
+                                    <label for="Married" class="text-black fs-6" data-key="search_label">विवाह:</label>
+                                    <select class="form-control" id="Married">
+                                        <option selected disabled value>विवाह चुने</option>
+                                        <option value="हाँ">हाँ</option>
+                                        <option value="नहीं">नहीं</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-2 col-md-2 col-sm-6">
+                                <div class="search-box">
+                                    <label for="child-type" class="text-black fs-6" data-key="search_label">बच्चे का प्रकार:</label>
+                                    <select class="form-control" id="child_type">
+                                        <option selected disabled value>बच्चे का प्रकार चुने</option>
+                                        <option value="पुत्र">पुत्र</option>
+                                        <option vaule="पुत्री">पुत्री</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-12 col-lg-3 col-md-3 col-sm-6">
                                 <div class="search-box">
-                                    <label for="Qualification" class="text-black fs-6" data-key="search_label">Qualification:</label>
-                                    <input type="text" id="Qualification" class="control-form search-input-field" placeholder="Search Qualification">
+                                    <label for="Qualification" class="text-black fs-6" data-key="search_label">शिक्षा:</label>
+                                    <select class="form-control husband-qualification" id="Qualification">
+                                        <option selected disabled value>शिक्षा चुने</option>
+                                        <option value="प्राथमिक">प्राथमिक</option>
+                                        <option value="माध्यमिक">माध्यमिक</option>
+                                        <option value="उच्च माध्यमिक">उच्च माध्यमिक</option>
+                                        <option value="स्नातक">स्नातक</option>
+                                        <option value="स्नातकोत्तर">स्नातकोत्तर</option>
+                                        <option value="बैचलर ऑफ आर्ट्स (बी.ए.)">बैचलर ऑफ आर्ट्स (बी.ए.)</option>
+                                        <option value="बैचलर ऑफ साइंस (बी.एस्स.)">बैचलर ऑफ साइंस (बी.एस्स.)</option>
+                                        <option value="बैचलर ऑफ कॉमर्स (बी.कॉम.)">बैचलर ऑफ कॉमर्स (बी.कॉम.)</option>
+                                        <option value="बैचलर ऑफ इंजीनियरिंग (बी.ई.)">बैचलर ऑफ इंजीनियरिंग (बी.ई.)</option>
+                                        <option value="बैचलर ऑफ टेक्नोलॉजी (बी.टेक.)">बैचलर ऑफ टेक्नोलॉजी (बी.टेक.)</option>
+                                        <option value="बैचलर ऑफ मेडिसिन, बैचलर ऑफ सर्जरी (एमबीबीएस)">बैचलर ऑफ मेडिसिन, बैचलर ऑफ सर्जरी (एमबीबीएस)</option>
+                                        <option value="बैचलर ऑफ डेंटल सर्जरी (बी.डी.एस.)">बैचलर ऑफ डेंटल सर्जरी (बी.डी.एस.)</option>
+                                        <option value="बैचलर ऑफ फार्मेसी (बी.फार्म.)">बैचलर ऑफ फार्मेसी (बी.फार्म.)</option>
+                                        <option value="बैचलर ऑफ आर्किटेक्चर (बी.आर्क.)">बैचलर ऑफ आर्किटेक्चर (बी.आर्क.)</option>
+                                        <option value="बैचलर ऑफ बिजनेस एडमिनिस्ट्रेशन (बीबीए)">बैचलर ऑफ बिजनेस एडमिनिस्ट्रेशन (बीबीए)</option>
+                                        <option value="बैचलर ऑफ कंप्यूटर एप्लीकेशन्स (बी.सी.ए)">बैचलर ऑफ कंप्यूटर एप्लीकेशन्स (बी.सी.ए)</option>
+                                        <option value="बैचलर ऑफ लॉ (बीएलबी)">बैचलर ऑफ लॉ (बीएलबी)</option>
+                                        <option value="बैचलर ऑफ एजुकेशन (बी.एड.)">बैचलर ऑफ एजुकेशन (बी.एड.)</option>
+                                        <option value="बैचलर ऑफ फाइन आर्ट्स (बीएफए)">बैचलर ऑफ फाइन आर्ट्स (बीएफए)</option>
+                                        <option value="बैचलर ऑफ सोशल वर्क (बी.एस.डब्ल्यू)">बैचलर ऑफ सोशल वर्क (बी.एस.डब्ल्यू)</option>
+                                        <option value="बैचलर ऑफ होटल मैनेजमेंट (बीएचएम)">बैचलर ऑफ होटल मैनेजमेंट (बीएचएम)</option>
+                                        <option value="बैचलर ऑफ फिजियोथेरेपी (बीपीटी)">बैचलर ऑफ फिजियोथेरेपी (बीपीटी)</option>
+                                        <option value="बैचलर ऑफ वेटरनरी साइंस (बीवीएस)">बैचलर ऑफ वेटरनरी साइंस (बीवीएस)</option>
+                                        <option value="बैचलर ऑफ डिजाइन (बी.डिजन)">बैचलर ऑफ डिजाइन (बी.डिजन)</option>
+                                        <option value="मास्टर ऑफ आर्ट्स (एमए)">मास्टर ऑफ आर्ट्स (एमए)</option>
+                                        <option value="मास्टर ऑफ साइंस (एमएससी)">मास्टर ऑफ साइंस (एमएससी)</option>
+                                        <option value="मास्टर ऑफ कॉमर्स (एमकॉम)">मास्टर ऑफ कॉमर्स (एमकॉम)</option>
+                                        <option value="मास्टर ऑफ इंजीनियरिंग (एमई)">मास्टर ऑफ इंजीनियरिंग (एमई)</option>
+                                        <option value="मास्टर ऑफ टेक्नोलॉजी (एमटेक)">मास्टर ऑफ टेक्नोलॉजी (एमटेक)</option>
+                                        <option value="मास्टर ऑफ बिजनेस एडमिनिस्ट्रेशन (एमबीए)">मास्टर ऑफ बिजनेस एडमिनिस्ट्रेशन (एमबीए)</option>
+                                        <option value="मास्टर ऑफ कंप्यूटर एप्लीकेशन्स (एमसीए)">मास्टर ऑफ कंप्यूटर एप्लीकेशन्स (एमसीए)</option>
+                                        <option value="मास्टर ऑफ लॉ (एलएलएम)">मास्टर ऑफ लॉ (एलएलएम)</option>
+                                        <option value="मास्टर ऑफ एजुकेशन (एमएड)">मास्टर ऑफ एजुकेशन (एमएड)</option>
+                                        <option value="मास्टर ऑफ फाइन आर्ट्स (एमएफए)">मास्टर ऑफ फाइन आर्ट्स (एमएफए)</option>
+                                        <option value="मास्टर ऑफ सोशल वर्क (एमएसडब्ल्यू)">मास्टर ऑफ सोशल वर्क (एमएसडब्ल्यू)</option>
+                                        <option value="मास्टर ऑफ हॉस्पिटल एडमिनिस्ट्रेशन (एमएचए)">मास्टर ऑफ हॉस्पिटल एडमिनिस्ट्रेशन (एमएचए)</option>
+                                        <option value="मास्टर ऑफ पब्लिक हेल्थ (एमपीएच)">मास्टर ऑफ पब्लिक हेल्थ (एमपीएच)</option>
+                                        <option value="मास्टर ऑफ फार्मेसी (एमफार्म)">मास्टर ऑफ फार्मेसी (एमफार्म)</option>
+                                        <option value="मास्टर ऑफ डिजाइन (एमडिजन)">मास्टर ऑफ डिजाइन (एमडिजन)</option>
+                                        <option value="मास्टर ऑफ वेटरनरी साइंस (एमवीएस)">मास्टर ऑफ वेटरनरी साइंस (एमवीएस)</option>
+                                        <option value="मास्टर ऑफ फिजियोथेरेपी (एमपीटी)">मास्टर ऑफ फिजियोथेरेपी (एमपीटी)</option>
+                                        <option value="डॉक्टर ऑफ फिलॉसफी">डॉक्टर ऑफ फिलॉसफी</option>
+                                        <option value="डॉक्टर ऑफ मेडिसिन">डॉक्टर ऑफ मेडिसिन</option>
+                                        <option value="डॉक्टर ऑफ डेंटल सर्जरी">डॉक्टर ऑफ डेंटल सर्जरी</option>
+                                        <option value="डॉक्टर ऑफ वेटरनरी मेडिसिन">डॉक्टरेट ऑफ वेटरनरी मेडिसिन (पशु चिकित्सा में)</option>
+                                        <option value="इंजीनियरिंग में डिप्लोमा">इंजीनियरिंग में डिप्लोमा</option>
+                                        <option value="फार्मेसी में डिप्लोमा">फार्मेसी में डिप्लोमा</option>
+                                        <option value="शिक्षा में डिप्लोमा">शिक्षा में डिप्लोमा</option>
+                                        <option value="पोस्टग्रेजुएट डिप्लोमा इन मैनेजमेंट">पोस्टग्रेजुएट डिप्लोमा इन मैनेजमेंट</option>
+                                        <option value="डिजिटल मार्केटिंग में सर्टिफिकेट">डिजिटल मार्केटिंग में सर्टिफिकेट</option>
+                                        <option value="डेटा साइंस में सर्टिफिकेट">डेटा साइंस में सर्टिफिकेट</option>
+                                        <option value="ग्राफिक डिजाइन में सर्टिफिकेट">ग्राफिक डिजाइन में सर्टिफिकेट</option>
+                                        <option value="अन्य">अन्य</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-12 col-lg-3 col-md-3 col-sm-6">
                                 <div class="search-box">
-                                    <label for="Status" class="text-black fs-6" data-key="search_label">Status:</label>
-                                    <input type="text" id="Status" class="control-form search-input-field" placeholder="Search Marital Status">
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-3 col-md-3 col-sm-6">
-                                <div class="search-box">
-                                    <label for="Occupation" class="text-black fs-6" data-key="search_label">Occupation:</label>
-                                    <input type="text" id="Occupation" class="control-form search-input-field" placeholder="Search Occupation">
+                                    <label for="Occupation" class="text-black fs-6" data-key="search_label">कार्य:</label>
+                                    <!-- <input type="text" id="Occupation" class="control-form search-input-field" placeholder="Search Occupation"> -->
+                                    <select class="form-control occupation-select" id="Occupation">
+                                        <option selected disabled value>चुने कार्य</option>
+                                        <option value="कृषि">कृषि</option>
+                                        <option value="व्यवसाय">व्यवसाय</option>
+                                        <option value="फेरी">फेरी</option>
+                                        <option value="श्रमिक">श्रमिक</option>
+                                        <option value="पेंशन">पेंशन</option>
+                                        <option value="शासकीया नौकरी">शासकीया नौकरी</option>
+                                        <option value="प्राइवेट नौकरी">प्राइवेट नौकरी</option>
+                                        <option value="सेवानिवृत">सेवानिवृत</option>
+                                        <option value="गृहिणी">गृहिणी</option>
+                                        <option value="विद्यार्थी">विद्यार्थी</option>
+                                        <option value="अन्य">अन्य</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-12  text-center">
                                 <div class="button-group mt-2">
-                                    <button class="bg-info mt-1" data-key="search_button">Search</button>
-                                    <button class="bg-info mt-1" data-key="reset_button">Reset</button>
+                                    <button class="bg-info mt-1" data-key="search_button" id="search">सर्च</button>
+                                    <button class="bg-info mt-1" data-key="reset_button" onclick="resetdata()">रीसेट</button>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="table-responsive mt-4">
                         <table id="example" class="table table-striped bg-info table-hover table-bordered dataTable no-footer" width="100%">
-                            <thead class="">
+                            <thead>
                                 <tr>
-                                    <!-- <th class="text-white" data-key="s_no">S.No.</th> -->
-                                    <th class="text-white" data-key="name">Name</th>
-                                    <th class="text-white" data-key="mobile">Mobile</th>
-                                    <th class="text-white" data-key="age">Age</th>
-                                    <th class="text-white" data-key="state">State</th>
-                                    <th class="text-white" data-key="other_state" style="display:none;">Other State</th>
-                                    <th class="text-white" data-key="district">District</th>
-                                    <th class="text-white" data-key="other_district" style="display:none;">Other District</th>
-                                    <th class="text-white" data-key="city">City</th>
-                                    <th class="text-white" data-key="other_city" style="display:none;">Other City</th>
-                                    <th class="text-white" data-key="qualification">Qualification</th>
-                                    <th class="text-white" data-key="marital_status">Marital Status</th>
-                                    <th class="text-white" data-key="occupation">Occupation</th>
+                                    <th class="text-white" data-key="name">नाम</th>
+                                    <th class="text-white" data-key="father_name">पिता का नाम</th>
+                                    <th class="text-white" data-key="mobile">मोबाइल नंबर</th>
+                                    <th class="text-white" data-key="age">आयु</th>
+                                    <th class="text-white" data-key="age">मूल निवासी</th>
+                                    <th class="text-white" data-key="qualification">शिक्षा</th>
+                                    <th class="text-white" data-key="marital_status">वैवाहिक स्थिति	</th>
+                                    <th class="text-white" data-key="occupation">कार्य</th>
+                                
                                 </tr>
                             </thead>
-                            <tbody id="data-table" class="bg-white">
-                                <!-- Data will be appended here -->
-                            </tbody>
+                            <tbody id="data-table" class="bg-white"></tbody>
                         </table>
                     </div>
                 </div>
@@ -262,110 +415,6 @@
 </body>
 </html>
 
-<script>
-    const menubtn = document.querySelector(".menubtn");
-const closebtn = document.querySelector(".closebtn");
-
-menubtn.onclick = () => {
-    menubtn.style.display = "none"
-    closebtn.style.display = "block"
-}
-
-closebtn.onclick = () => {
-    closebtn.style.display = "none"
-    menubtn.style.display = "block"
-}
-    </script>
-
-<script>
-$(document).ready(function() {
-    var url = 'http://192.168.1.10:8000/api/getall_initial_family_details/';
-
-    $.ajax({
-        url: url,
-        type: "GET",
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        },
-        success: function(response) {
-            var data = response.data;
-            var tableBody = $('#data-table');
-            tableBody.empty(); // Clear any existing data
-
-            var showOtherCity = false;
-            var showOtherState = false;
-            var showOtherDistrict = false;
-
-            data.forEach(function(item, index) {
-                if (item.familymemberdetails.length > 0) { // Check if familymemberdetails is not empty
-                    item.familymemberdetails.forEach(function(member, memberIndex) {
-                        var row = '<tr>' +
-                      
-                            '<td><a href="view-detail-page.php?family_id=' + item.fk_family_id + '&family_member_id=' + member.id + '">' + member.name + '</a></td>' +
-                            '<td>' + member.mobile_number + '</td>' +
-                            '<td>' + member.age + '</td>' +
-                            '<td>' + (item.state_details ? item.state_details.state_name : '') + '</td>' +
-                            '<td class="other_state">' + (item.other_state || '') + '</td>' +
-                            '<td>' + (item.district_details ? item.district_details.district_name : '') + '</td>' +
-                            '<td class="other_district">' + (item.other_district || '') + '</td>' +
-                            '<td>' + (item.city_details ? item.city_details.city_name : '') + '</td>' +
-                            '<td class="other_city">' + (item.other_city || '') + '</td>' +
-                            '<td>' + member.qualification + '</td>' +
-                            '<td>' + member.marital_status + '</td>' +
-                            '<td>' + member.occupation + '</td>' +
-                        '</tr>';
-                        tableBody.append(row);
-
-                        // Check if we need to show the columns
-                        if (item.other_city != '') {
-                            showOtherCity = true;
-                        }
-                        if (item.other_district != '') {
-                            showOtherDistrict = true;
-                        }
-                        if (item.other_state != '') {
-                            showOtherState = true;
-                        }
-                    });
-                }
-            });
-
-            // Show or hide the columns based on the data
-            if (showOtherCity) {
-                $('#example th[data-key="other_city"]').show();
-                $('#example th[data-key="other_state"]').hide();
-                $('#example th[data-key="other_district"]').hide();
-            }
-            if (showOtherDistrict) {
-                $('#example th[data-key="other_district"]').show();
-                $('#example th[data-key="other_state"]').hide();
-                if (!showOtherCity) {
-                    $('#example th[data-key="other_city"]').hide();
-                }
-            }
-            if (showOtherState) {
-                $('#example th[data-key="other_state"]').show();
-                if (!showOtherCity) {
-                    $('#example th[data-key="other_city"]').hide();
-                }
-                if (!showOtherDistrict) {
-                    $('#example th[data-key="other_district"]').hide();
-                }
-            }
-
-            if (showOtherCity && showOtherDistrict && showOtherState) {
-                $('#example th[data-key="other_state"]').show();
-                $('#example th[data-key="other_district"]').show();
-                $('#example th[data-key="other_city"]').show();
-            }
-        },
-        error: function(error) {
-            console.error('Error fetching data:', error);
-            alert('An error occurred while fetching data. Please try again.');
-        }
-    });
-});
-</script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

@@ -1,26 +1,9 @@
 $(document).ready(function() {
     $('#search').click(searchdata);
 });
-function detectLanguage(text) {
-    if (!text || text.trim() === '') {
-        return 'Null Value';
-      }
-    // Regular expression for Devanagari script (Hindi)
-    var hindiRegex = /^[\u0900-\u097F\s]+$/;
-    // Regular expression for Latin script (English) excluding numbers
-    var englishRegex = /^[A-Za-z\s]+$/;
 
-    if (hindiRegex.test(text)) {
-      return 'Hindi';
-    } else if (englishRegex.test(text)) {
-      return 'English';
-    } else {
-      return 'Number included';
-    }
-  }
 function searchdata() {
-    var Name = $('#customerName').val();
-    console.log(Name);
+    var Name = $('#Name').val();
     var number = $('#number').val();
     var minAge = $('#minAge').val();
     var maxAge = $('#maxAge').val();
@@ -30,30 +13,8 @@ function searchdata() {
     var OtherDistrict = $('#OtherDistrict').val(); 
     var Qualification = $('#Qualification').val();
     var Status = $('#Status').val();
-    var Married = $('#Married').val();
-    var child_type = $('#child_type').val();
     var Occupation = $('#Occupation').val();
 
-    var fieldsToCheck = [
-        Name, number, minAge, maxAge, State, OtherState, District, OtherDistrict, OtherDistrict,
-        Qualification, Status, Married, child_type, Occupation, 
-        
-    ];
-   var arr = []
-   var fieldarr =[]
-    for (var field of fieldsToCheck) {
-        var language = detectLanguage(field);
-        console.log(language,'language');
-        arr.push(language);
-        fieldarr.push(field);
-       
-    }
-    console.log(fieldarr,'fieldarr');
-    console.log( arr,'arr');
-    if(arr.includes('English')){
-            alert('You Should Fill The Form In Hindi');
-            return;
-        }
     // Value must be an integer
     var ageRegex = /^\d+$/; // Regular expression to match only digits (0-9)
 
@@ -84,7 +45,7 @@ function searchdata() {
     }
 
     // Check if all fields are empty
-    var allFieldsEmpty = !Name && !number && !minAge && !maxAge && !State && !District && !Qualification && !Status && !Married && !child_type && !Occupation;
+    var allFieldsEmpty = !Name && !number && !minAge && !maxAge && !State && !District && !Qualification && !Status && !Occupation;
 
     if (allFieldsEmpty) {
         alert('Please enter at least one search criteria.');
@@ -104,8 +65,6 @@ function searchdata() {
             'other_dist': OtherDistrict,
             'qualification': Qualification,
             'maritalstatus': Status,
-            'marrieged': Married,
-            'child_type': child_type,
             'occupation': Occupation
         };
     }
@@ -144,7 +103,10 @@ function updateTable(data) {
     var showOtherDistrict = false;
 
     data.forEach(function(item) {
-        // Assuming 'initfamilydetails' contains the necessary nested details
+        if (item.marriage_type !== "अंतर्जातीय") {
+            return; // Skip if marriage_type is not "Same Caste"
+        }
+
         var otherCity = item.initfamilydetails[0].other_city || '';
         var otherState = item.initfamilydetails[0].other_state || '';
         var otherDistrict = item.initfamilydetails[0].other_district || '';
@@ -153,20 +115,20 @@ function updateTable(data) {
         if (otherState) showOtherState = true;
         if (otherDistrict) showOtherDistrict = true;
 
-        var stateName = (item.initfamilydetails[0].state_details && item.initfamilydetails[0].state_details.state_name) || '';
-        var districtName = (item.initfamilydetails[0].district_details && item.initfamilydetails[0].district_details.district_name) || '';
-        var cityName = (item.initfamilydetails[0].city_details && item.initfamilydetails[0].city_details.city_name) || '';
-        var maritalStatus = item.marital_status || '';
-
         var row = '<tr>' +
-            '<td><a href="view-detail-page.php?family_id=' + item.family_id + '&family_member_id=' + item.family_member_id + '">' + (item.name || '') + '</a></td>' +
-            '<td>' + (item.father_name || '') + '</td>' +
-            '<td>' + (item.mobile_number || '') + '</td>' +
-            '<td>' + (item.age || '') + '</td>' +
-            '<td>' + stateName + ' ' + otherState + ', ' + districtName + ' ' + otherDistrict + ', ' + cityName + ' ' + otherCity + '</td>' +
-            '<td>' + (item.qualification || '') + '</td>' +
-            '<td>' + maritalStatus + '</td>' +
-            '<td>' + (item.occupation || '') + '</td>' +
+            '<td><a href="view-detail-page.php?family_id=' + item.family_id + '&family_member_id=' + item.family_member_id + '">' + item.name + '</a></td>' +
+            '<td>' + item.mobile_number + '</td>' +
+            '<td>' + item.age + '</td>' +
+            '<td>' + (item.initfamilydetails[0].state_details ? item.initfamilydetails[0].state_details.state_name : '') + '</td>' +
+            '<td class="other_state" style="display:none;">' + otherState + '</td>' +
+            '<td>' + (item.initfamilydetails[0].district_details ? item.initfamilydetails[0].district_details.district_name : '') + '</td>' +
+            '<td class="other_district" style="display:none;">' + otherDistrict + '</td>' +
+            '<td>' + (item.initfamilydetails[0].city_details ? item.initfamilydetails[0].city_details.city_name : '') + '</td>' +
+            '<td class="other_city" style="display:none;">' + otherCity + '</td>' +
+            '<td>' + item.qualification + '</td>' +
+            '<td>' + (item.marital_status || '') + '</td>' +
+            '<td>' + item.occupation + '</td>' +
+            '<td>' + item.marriage_type + '</td>' +
         '</tr>';
         tableBody.append(row);
     });
@@ -277,6 +239,8 @@ function fetchOtherStates() {
         }
     });
 }
+
+// Initial call to populate the State dropdown
 getState();
 function getDistrict() {
     var url = "http://192.168.1.10:8000/api/districts/";
@@ -345,6 +309,8 @@ function fetchOtherDistricts() {
         }
     });
 }
+
+// Initial call to populate the District dropdown
 getDistrict();
 
 

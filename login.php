@@ -253,7 +253,7 @@
               </div>
               <div class="form-check">
                   <input type="radio" id="agent" name="role" value="2" class="form-check-input">
-                  <label for="agent" class="form-check-label">Agent</label>
+                  <label for="agent" class="form-check-label">Jangadna Adhikari</label>
               </div>
             </div>
           </div>
@@ -264,12 +264,19 @@
                   <input type="text" class="form-control" placeholder="Enter Username" id="username" required>
               </div>
           </div>
-          <div class="col-12 mt-2">
+          <div class="col-12 mt-2" hidden>
             <label>Mobile No.:<span class="text-danger">*</span></label>
             <div class="input-group">
                 <div class="input-group-text"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                <input type="text" class="form-control" placeholder="Enter Number" id="mobile" required>
+                <input type="text" class="form-control" placeholder="Enter Number" id="mobile">
             </div>
+          </div>
+          <div class="col-12 mt-2">
+            <label>Password:<span class="text-danger">*</span></label>
+              <div class="input-group">
+                <div class="input-group-text"><i class="fas fa-eye-slash" id="eyeeye"></i></div>
+                  <input type="password" class="form-control" placeholder="Enter Password" id="password" required>
+                </div>
           </div>
           <div class="col-12 mt-5">
             <input class="btn" type="submit" value="Login" id="loginbtn"/>

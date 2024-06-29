@@ -67,7 +67,7 @@ function getState() {
             const selects = document.querySelectorAll('#stateDropdown');
 
             selects.forEach(select => {
-                select.innerHTML = '<option selected disabled value="">Please select an option</option>';
+                select.innerHTML = '<option selected disabled value="">कृपया एक विकल्प चुनें</option>';
 
                 if (data.data && data.data.length > 0) {
                     data.data.forEach(row => {
@@ -89,7 +89,7 @@ function getState() {
                         getDistrict(this.value); // Always fetch districts, regardless of selection
                     });
                 } else {
-                    select.innerHTML = '<option>No valid data available</option>';
+                    select.innerHTML = '<option>कोई वैध डेटा उपलब्ध नहीं है</option>';
                 }
             });
         },
@@ -113,7 +113,7 @@ function getDistrict(state_id) {
             const selects = document.querySelectorAll('#districtDropdown');
 
             selects.forEach(select => {
-                select.innerHTML = '<option selected disabled value="">Please select an option</option>';
+                select.innerHTML = '<option selected disabled value="">कृपया एक विकल्प चुनें</option>';
 
                 if (data.data && data.data.length > 0) {
                     data.data.forEach(row => {
@@ -123,7 +123,7 @@ function getDistrict(state_id) {
                         select.appendChild(option);
                     });
                 } else {
-                    select.innerHTML = '<option>No valid data available</option>';
+                    select.innerHTML = '<option>कोई वैध डेटा उपलब्ध नहीं है</option>';
                 }
                 // Add event listener to district dropdown
                 select.addEventListener('change', function() {
@@ -157,7 +157,7 @@ function getCity(district_id) {
             const selects = document.querySelectorAll('#city');
 
             selects.forEach(select => {
-                select.innerHTML = '<option selected disabled value="">Please select an option</option>';
+                select.innerHTML = '<option selected disabled value="">कृपया एक विकल्प चुनें</option>';
 
                 if (data.data) {
                     const cities = Array.isArray(data.data) ? data.data : [data.data];
@@ -170,10 +170,10 @@ function getCity(district_id) {
                             select.appendChild(option);
                         });
                     } else {
-                        select.innerHTML = '<option>No valid data available</option>';
+                        select.innerHTML = '<option>कोई वैध डेटा उपलब्ध नहीं है</option>';
                     }
                 } else {
-                    select.innerHTML = '<option>No valid data available</option>';
+                    select.innerHTML = '<option>कोई वैध डेटा उपलब्ध नहीं है</option>';
                 }
                 // Add event listener to city dropdown
                 select.addEventListener('change', function() {

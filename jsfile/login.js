@@ -7,13 +7,15 @@ $(document).ready(function(){
 
 function login() {
   var username = $('#username').val();
-  var phone = $('#mobile').val();
+//   var phone = $('#mobile').val();
+  var password = $('#password').val();
   var role = $('input[name="role"]:checked').val();  // Get the selected role value
   var url = "http://192.168.1.10:8000/api/login/";
 
   var paraArr = {
       'name': username,
-      'mobile': phone,
+      'password': password,
+    //   'mobile': phone,
       'role_id': role
   };
 
@@ -35,7 +37,7 @@ function login() {
           }
 
           localStorage.setItem('name', username);
-          localStorage.setItem('mobile', phone);
+          localStorage.setItem('password', password);
           
           const d = new Date();
           d.setTime(d.getTime() + 60 * 60 * 1000);
@@ -59,3 +61,21 @@ function login() {
       }
   });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const eyeIcon = document.getElementById('eyeeye');
+    const passwordInput = document.getElementById('password');
+    
+    // Toggle password visibility on eye icon click
+    eyeIcon.addEventListener('click', function() {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        }
+    });
+});

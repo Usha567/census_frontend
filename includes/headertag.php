@@ -1,6 +1,6 @@
 <?php
 //  $baseUrl = '/tractor-project/tractor-project/';
-$APIBaseURL = 'http://192.168.1.10:8000/spi/';
+$APIBaseURL = 'http://192.168.1.10:8000/api/';
 // $CustomerAPIBaseURL = 'http://192.168.1.21:8000/api/customer/';
 // $baseUrl = '/tractor_house/';
 ?>

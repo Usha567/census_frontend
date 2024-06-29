@@ -31,6 +31,7 @@ nav {
     justify-content: center;
     text-align: center;
     flex: 1;
+    margin-left: 35px;
 }
 
 .logo h6 {

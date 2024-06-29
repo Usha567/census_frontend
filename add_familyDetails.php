@@ -33,55 +33,40 @@
       height: 16px;
       margin-right: 5px;
   }
+  .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon {
+      display: none !important;
+    }
+    .VIpgJd-ZVi9od-ORHb {
+  display: none !important;
+}
 </style>
 <body>
 <header class="header">
     <nav>
       
-        <div class="logo">
+        <div class="logo notranslate">
             <h6 class="fw-bold text-white">"छीपा समाज शिक्षा और कैरियर" ग्रुप</h6>
             <h6 class="fw-bold text-white">छीपा (क्षत्रिय) समाज की जनगणना, वर्ष - 2024</h6>
             <h6 class="fw-bold text-white">(परिवार परिचय - पत्र)</h6>
         </div>
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
-        <ul class="menu">
-            <li>
-                <a href="#" id="translate-icon" onclick="toggleDropdown()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-translate" viewBox="0 0 16 16">
-                        <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z"/>
-                        <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31"/>
-                    </svg>
-                </a>
-                <div class="dropdown" id="translate-dropdown" style="display: none;">
-                    <a href="#" class="text-dark">हिंदी</a>
-                    <a href="#" class="text-dark">English</a>
-                </div>
-            </li>
-            <!-- Add the logout icon here -->
-            <!-- <li>
-                <a href="#" class="logout-icon">
-                   <button class="logoutbutton" onclick="user_logout();">logout</button>
-                </a>
-            </li> -->
-        </ul>
+        <div id="google_translate_element" class="mt-3" ></div>
     </nav>
 </header>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 bg-light w-100">
-                 <h4 class="mb-4 text-center mt-2 align-items-center">Family Census Form</h4>
+                 <h4 class="mb-4 text-center mt-2 align-items-center">परिवार जनगणना फॉर्म</h4>
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container pb-5">
         <!-- Husband Section -->
         <div class="member-section">
             <div class="filter-card shadow mt-5">
                 <div class="card bg-light">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4 class="hading">Male Chief</h4>
+                            <h4 class="hading">पुरुष मुखिया</h4>
                             <span class="toggle-icon" id="toggle-husband" onclick="toggleSection('husband-section', 'toggle-husband')">+</span>
                         </div>
                         <div id="husband-section" style="display: none;">
@@ -97,6 +82,7 @@
                                         <div class="form-group">
                                             <label for="husband-id">family_id</label>
                                             <input type="text" class="form-control" id="family_id"value="">
+                                            <input type="text" class="form-control" id="updateOrInsert"value="insert">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4" hidden>
@@ -113,215 +99,232 @@
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-name">Name</label>
-                                            <input type="text" class="form-control" id="husband_name">
+                                            <label for="husband-name">नाम</label>
+                                            <input type="text" class="form-control" id="husband_name" >
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-mother-name">Mother's Name</label>
+                                            <label for="husband-mother-name">मां का नाम</label>
                                             <input type="text" class="form-control" id="husband_mother_name">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-father-name">Father's Name</label>
+                                            <label for="husband-father-name">पिता का नाम</label>
                                             <input type="text" class="form-control" id="husband_father_name">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-father-surname">Original Surname</label>
+                                            <label for="husband-wife-name">पत्नी</label>
+                                            <input type="text" class="form-control" id="husband_wife_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 col-md-4 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="husband-father-surname">मूल सरनेम</label>
                                             <input type="text" class="form-control" id="husband_father_surname">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-father-id">Father's ID</label>
+                                            <label for="husband-father-id">पिता आईडी</label>
                                             <input type="text" class="form-control" id="husband_father_id">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-age">Age</label>
+                                            <label for="husband-age">आयु</label>
                                             <input type="number" class="form-control" id="husband_age">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-dob">Date of Birth</label>
+                                            <label for="husband-dob">जन्म की तारीख</label>
                                             <input type="date" class="form-control" id="husband_dob">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-mobile">Mobile Number</label>
+                                            <label for="husband-mobile">मोबाइल नंबर</label>
                                             <input type="tel" class="form-control" id="husband_mobile">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-relation">Relation with Head of Family</label>
-                                            <input type="text" class="form-control" id="husband_relation" value="Self" readonly>
+                                            <label for="husband-relation">परिवार के मुखिया के साथ संबंध</label>
+                                            <input type="text" class="form-control" id="husband_relation" value="स्वयं" readonly>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-qualification">Qualification</label>
+                                            <label for="husband-qualification">शिक्षा</label>
                                             <select class="form-control husband-qualification" id="husband_qualification">
-                                            <option selected disabled value>Select Qualification</option>
-                                            <option value="Primary">Primary</option>
-                                            <option value="Secondary">Secondary</option>
-                                            <option value="Higher Secondary">Higher Secondary</option>
-                                            <option value="Graduate">Graduate</option>
-                                            <option value="Post Graduate">Post Graduate</option>
-                                            <option value="Bachelor of Arts (B.A.)">Bachelor of Arts (B.A.)</option>
-                                            <option value="Bachelor of Science (B.Sc.)">Bachelor of Science (B.Sc.)</option>
-                                            <option value="Bachelor of Commerce (B.Com.)">Bachelor of Commerce (B.Com.)</option>
-                                            <option value="Bachelor of Engineering (B.E.)">Bachelor of Engineering (B.E.)</option>
-                                            <option value="Bachelor of Technology (B.Tech.)">Bachelor of Technology (B.Tech.)</option>
-                                            <option value="Bachelor of Medicine, Bachelor of Surgery (MBBS)">Bachelor of Medicine, Bachelor of Surgery (MBBS)</option>
-                                            <option value="Bachelor of Dental Surgery (BDS)">Bachelor of Dental Surgery (BDS)</option>
-                                            <option value="Bachelor of Pharmacy (B.Pharm)">Bachelor of Pharmacy (B.Pharm)</option>
-                                            <option value="Bachelor of Architecture (B.Arch)">Bachelor of Architecture (B.Arch)</option>
-                                            <option value="Bachelor of Business Administration (BBA)">Bachelor of Business Administration (BBA)</option>
-                                            <option value="Bachelor of Computer Applications (BCA)">Bachelor of Computer Applications (BCA)</option>
-                                            <option value="Bachelor of Laws (LLB)">Bachelor of Laws (LLB)</option>
-                                            <option value="Bachelor of Education (B.Ed)">Bachelor of Education (B.Ed)</option>
-                                            <option value="Bachelor of Fine Arts (BFA)">Bachelor of Fine Arts (BFA)</option>
-                                            <option value="Bachelor of Social Work (BSW)">Bachelor of Social Work (BSW)</option>
-                                            <option value="Bachelor of Hotel Management (BHM)">Bachelor of Hotel Management (BHM)</option>
-                                            <option value="Bachelor of Physiotherapy (BPT)">Bachelor of Physiotherapy (BPT)</option>
-                                            <option value="Bachelor of Veterinary Science (BVSc)">Bachelor of Veterinary Science (BVSc)</option>
-                                            <option value="Bachelor of Design (B.Des)">Bachelor of Design (B.Des)</option>
-                                            <option value="Master of Arts (M.A.)">Master of Arts (M.A.)</option>
-                                            <option value="Master of Science (M.Sc.)">Master of Science (M.Sc.)</option>
-                                            <option value="Master of Commerce (M.Com.)">Master of Commerce (M.Com.)</option>
-                                            <option value="Master of Engineering (M.E.)">Master of Engineering (M.E.)</option>
-                                            <option value="Master of Technology (M.Tech.)">Master of Technology (M.Tech.)</option>
-                                            <option value="Master of Business Administration (MBA)">Master of Business Administration (MBA)</option>
-                                            <option value="Master of Computer Applications (MCA)">Master of Computer Applications (MCA)</option>
-                                            <option value="Master of Laws (LLM)">Master of Laws (LLM)</option>
-                                            <option value="Master of Education (M.Ed)">Master of Education (M.Ed)</option>
-                                            <option value="Master of Fine Arts (MFA)">Master of Fine Arts (MFA)</option>
-                                            <option value="Master of Social Work (MSW)">Master of Social Work (MSW)</option>
-                                            <option value="Master of Hospital Administration (MHA)">Master of Hospital Administration (MHA)</option>
-                                            <option value="Master of Public Health (MPH)">Master of Public Health (MPH)</option>
-                                            <option value="Master of Pharmacy (M.Pharm)">Master of Pharmacy (M.Pharm)</option>
-                                            <option value="Master of Design (M.Des)">Master of Design (M.Des)</option>
-                                            <option value="Master of Veterinary Science (MVSc)">Master of Veterinary Science (MVSc)</option>
-                                            <option value="Master of Physiotherapy (MPT)">Master of Physiotherapy (MPT)</option>
-                                            <option value="Doctor of Philosophy (Ph.D.)">Doctor of Philosophy (Ph.D.)</option>
-                                            <option value="Doctor of Medicine (MD)">Doctor of Medicine (MD)</option>
-                                            <option value="Doctor of Dental Surgery (DDS)">Doctor of Dental Surgery (DDS)</option>
-                                            <option value="Doctor of Veterinary Medicine (DVM)">Doctor of Veterinary Medicine (DVM)</option>
-                                            <option value="Diploma in Engineering">Diploma in Engineering</option>
-                                            <option value="Diploma in Pharmacy">Diploma in Pharmacy</option>
-                                            <option value="Diploma in Education (D.Ed)">Diploma in Education (D.Ed)</option>
-                                            <option value="Postgraduate Diploma in Management (PGDM)">Postgraduate Diploma in Management (PGDM)</option>
-                                            <option value="Certificate in Digital Marketing">Certificate in Digital Marketing</option>
-                                            <option value="Certificate in Data Science">Certificate in Data Science</option>
-                                            <option value="Certificate in Graphic Design">Certificate in Graphic Design</option>
-                                            <option value="Other">Other</option>
+                                                <option selected disabled value>शिक्षा चुने</option>
+                                                <option value="प्राथमिक">प्राथमिक</option>
+                                                <option value="माध्यमिक">माध्यमिक</option>
+                                                <option value="उच्च माध्यमिक">उच्च माध्यमिक</option>
+                                                <option value="स्नातक">स्नातक</option>
+                                                <option value="स्नातकोत्तर">स्नातकोत्तर</option>
+                                                <option value="बैचलर ऑफ आर्ट्स (बी.ए.)">बैचलर ऑफ आर्ट्स (बी.ए.)</option>
+                                                <option value="बैचलर ऑफ साइंस (बी.एस्स.)">बैचलर ऑफ साइंस (बी.एस्स.)</option>
+                                                <option value="बैचलर ऑफ कॉमर्स (बी.कॉम.)">बैचलर ऑफ कॉमर्स (बी.कॉम.)</option>
+                                                <option value="बैचलर ऑफ इंजीनियरिंग (बी.ई.)">बैचलर ऑफ इंजीनियरिंग (बी.ई.)</option>
+                                                <option value="बैचलर ऑफ टेक्नोलॉजी (बी.टेक.)">बैचलर ऑफ टेक्नोलॉजी (बी.टेक.)</option>
+                                                <option value="बैचलर ऑफ मेडिसिन, बैचलर ऑफ सर्जरी (एमबीबीएस)">बैचलर ऑफ मेडिसिन, बैचलर ऑफ सर्जरी (एमबीबीएस)</option>
+                                                <option value="बैचलर ऑफ डेंटल सर्जरी (बी.डी.एस.)">बैचलर ऑफ डेंटल सर्जरी (बी.डी.एस.)</option>
+                                                <option value="बैचलर ऑफ फार्मेसी (बी.फार्म.)">बैचलर ऑफ फार्मेसी (बी.फार्म.)</option>
+                                                <option value="बैचलर ऑफ आर्किटेक्चर (बी.आर्क.)">बैचलर ऑफ आर्किटेक्चर (बी.आर्क.)</option>
+                                                <option value="बैचलर ऑफ बिजनेस एडमिनिस्ट्रेशन (बीबीए)">बैचलर ऑफ बिजनेस एडमिनिस्ट्रेशन (बीबीए)</option>
+                                                <option value="बैचलर ऑफ कंप्यूटर एप्लीकेशन्स (बी.सी.ए)">बैचलर ऑफ कंप्यूटर एप्लीकेशन्स (बी.सी.ए)</option>
+                                                <option value="बैचलर ऑफ लॉ (बीएलबी)">बैचलर ऑफ लॉ (बीएलबी)</option>
+                                                <option value="बैचलर ऑफ एजुकेशन (बी.एड.)">बैचलर ऑफ एजुकेशन (बी.एड.)</option>
+                                                <option value="बैचलर ऑफ फाइन आर्ट्स (बीएफए)">बैचलर ऑफ फाइन आर्ट्स (बीएफए)</option>
+                                                <option value="बैचलर ऑफ सोशल वर्क (बी.एस.डब्ल्यू)">बैचलर ऑफ सोशल वर्क (बी.एस.डब्ल्यू)</option>
+                                                <option value="बैचलर ऑफ होटल मैनेजमेंट (बीएचएम)">बैचलर ऑफ होटल मैनेजमेंट (बीएचएम)</option>
+                                                <option value="बैचलर ऑफ फिजियोथेरेपी (बीपीटी)">बैचलर ऑफ फिजियोथेरेपी (बीपीटी)</option>
+                                                <option value="बैचलर ऑफ वेटरनरी साइंस (बीवीएस)">बैचलर ऑफ वेटरनरी साइंस (बीवीएस)</option>
+                                                <option value="बैचलर ऑफ डिजाइन (बी.डिजन)">बैचलर ऑफ डिजाइन (बी.डिजन)</option>
+                                                <option value="मास्टर ऑफ आर्ट्स (एमए)">मास्टर ऑफ आर्ट्स (एमए)</option>
+                                                <option value="मास्टर ऑफ साइंस (एमएससी)">मास्टर ऑफ साइंस (एमएससी)</option>
+                                                <option value="मास्टर ऑफ कॉमर्स (एमकॉम)">मास्टर ऑफ कॉमर्स (एमकॉम)</option>
+                                                <option value="मास्टर ऑफ इंजीनियरिंग (एमई)">मास्टर ऑफ इंजीनियरिंग (एमई)</option>
+                                                <option value="मास्टर ऑफ टेक्नोलॉजी (एमटेक)">मास्टर ऑफ टेक्नोलॉजी (एमटेक)</option>
+                                                <option value="मास्टर ऑफ बिजनेस एडमिनिस्ट्रेशन (एमबीए)">मास्टर ऑफ बिजनेस एडमिनिस्ट्रेशन (एमबीए)</option>
+                                                <option value="मास्टर ऑफ कंप्यूटर एप्लीकेशन्स (एमसीए)">मास्टर ऑफ कंप्यूटर एप्लीकेशन्स (एमसीए)</option>
+                                                <option value="मास्टर ऑफ लॉ (एलएलएम)">मास्टर ऑफ लॉ (एलएलएम)</option>
+                                                <option value="मास्टर ऑफ एजुकेशन (एमएड)">मास्टर ऑफ एजुकेशन (एमएड)</option>
+                                                <option value="मास्टर ऑफ फाइन आर्ट्स (एमएफए)">मास्टर ऑफ फाइन आर्ट्स (एमएफए)</option>
+                                                <option value="मास्टर ऑफ सोशल वर्क (एमएसडब्ल्यू)">मास्टर ऑफ सोशल वर्क (एमएसडब्ल्यू)</option>
+                                                <option value="मास्टर ऑफ हॉस्पिटल एडमिनिस्ट्रेशन (एमएचए)">मास्टर ऑफ हॉस्पिटल एडमिनिस्ट्रेशन (एमएचए)</option>
+                                                <option value="मास्टर ऑफ पब्लिक हेल्थ (एमपीएच)">मास्टर ऑफ पब्लिक हेल्थ (एमपीएच)</option>
+                                                <option value="मास्टर ऑफ फार्मेसी (एमफार्म)">मास्टर ऑफ फार्मेसी (एमफार्म)</option>
+                                                <option value="मास्टर ऑफ डिजाइन (एमडिजन)">मास्टर ऑफ डिजाइन (एमडिजन)</option>
+                                                <option value="मास्टर ऑफ वेटरनरी साइंस (एमवीएस)">मास्टर ऑफ वेटरनरी साइंस (एमवीएस)</option>
+                                                <option value="मास्टर ऑफ फिजियोथेरेपी (एमपीटी)">मास्टर ऑफ फिजियोथेरेपी (एमपीटी)</option>
+                                                <option value="डॉक्टर ऑफ फिलॉसफी">डॉक्टर ऑफ फिलॉसफी</option>
+                                                <option value="डॉक्टर ऑफ मेडिसिन">डॉक्टर ऑफ मेडिसिन</option>
+                                                <option value="डॉक्टर ऑफ डेंटल सर्जरी">डॉक्टर ऑफ डेंटल सर्जरी</option>
+                                                <option value="डॉक्टर ऑफ वेटरनरी मेडिसिन">डॉक्टरेट ऑफ वेटरनरी मेडिसिन (पशु चिकित्सा में)</option>
+                                                <option value="इंजीनियरिंग में डिप्लोमा">इंजीनियरिंग में डिप्लोमा</option>
+                                                <option value="फार्मेसी में डिप्लोमा">फार्मेसी में डिप्लोमा</option>
+                                                <option value="शिक्षा में डिप्लोमा">शिक्षा में डिप्लोमा</option>
+                                                <option value="पोस्टग्रेजुएट डिप्लोमा इन मैनेजमेंट">पोस्टग्रेजुएट डिप्लोमा इन मैनेजमेंट</option>
+                                                <option value="डिजिटल मार्केटिंग में सर्टिफिकेट">डिजिटल मार्केटिंग में सर्टिफिकेट</option>
+                                                <option value="डेटा साइंस में सर्टिफिकेट">डेटा साइंस में सर्टिफिकेट</option>
+                                                <option value="ग्राफिक डिजाइन में सर्टिफिकेट">ग्राफिक डिजाइन में सर्टिफिकेट</option>
+                                                <option value="अन्य">अन्य</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4 other-qualification-group" style="display: none;"> <!-- Initially hidden -->
                                         <div class="form-group">
-                                            <label for="other-qualification">Other Qualification</label>
-                                            <input type="text" class="form-control other-qualification" id="husband_other_qualification" placeholder="Enter your qualification">
+                                            <label for="other-qualification">अन्य शिक्षा</label>
+                                            <input type="text" class="form-control other-qualification" id="husband_other_qualification" placeholder="शिक्षा चुने">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-marriage-type">Marriage Type</label>
+                                            <label for="husband-marriage">विवाह</label>
+                                            <select class="form-control" id="husband_marriage" onchange="toggleHusMarriageType()">
+                                                <option selected disabled value>विवाह चुने</option>
+                                                <option value="1">हाँ</option>
+                                                <option value="0">नहीं</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 col-md-4 col-sm-4" id="husband_marriage_type_wrapper" style="display: none;">
+                                        <div class="form-group">
+                                            <label for="husband-marriage-type">विवाह का प्रकार</label>
                                             <select class="form-control" id="husband_marriage_type">
-                                                <option selected disabled value>Select Marriage Type</option>
-                                                <option>Same Caste</option>
-                                                <option>Other Caste</option>
+                                                <option selected disabled value>विवाह का प्रकार चुने</option>
+                                                <option>सजातीय</option>
+                                                <option>अंतर्जातीय</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-marital-status">Marital Status</label>
+                                            <label for="husband-marital-status">वैवाहिक स्थिति</label>
                                             <select class="form-control" id="husband_marital_status">
-                                                <option selected disabled value>Select Marital Status</option>
-                                                <option>Normal</option>
-                                                <option>Widower</option>
-                                                <option>Divorced</option>
-                                                <option>Parityag</option>
-                                                <option>Chhod Chhutti</option>
+                                                <option selected disabled value>वैवाहिक स्थिति चुने</option>
+                                                <option>सामान्य</option>
+                                                <option>विदुर</option>
+                                                <option>तलाकशुदा</option>
+                                                <option>परित्याग</option>
+                                                <option>छोड़ छुट्टी</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-blood-group">Blood Group</label>
+                                            <label for="husband-blood-group">ब्लड ग्रुप</label>
                                             <select class="form-control" id="husband_blood_group">
-                                            <option selected disabled value>Select Blood Group</option>
-                                                <option>A+</option>
-                                                <option>A-</option>
-                                                <option>B+</option>
-                                                <option>B-</option>
-                                                <option>AB+</option>
-                                                <option>AB-</option>
-                                                <option>O+</option>
-                                                <option>O-</option>
+                                                <option selected disabled value>ब्लड ग्रुप चुने</option>
+                                                <option>ए+</option>
+                                                <option>ए-</option>
+                                                <option>बी+</option>
+                                                <option>बी-</option>
+                                                <option>एबी+</option>
+                                                <option>एबी-</option>
+                                                <option>ओ+</option>
+                                                <option>ओ-</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-total-kids">Total Kids</label>
+                                            <label for="husband-total-kids">बच्चों की कुल संख्या</label>
                                             <input type="number" class="form-control" id="husband_total_kids">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-sons">Sons</label>
+                                            <label for="husband-sons">पुत्र</label>
                                             <input type="number" class="form-control" id="husband_sons">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-daughters">Daughters</label>
+                                            <label for="husband-daughters">पुत्री</label>
                                             <input type="number" class="form-control" id="husband_daughters">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-occupation">Occupation</label>
-                                            <select class="form-control occupation-select" id="husband_occupation">
-                                                <option selected disabled value>Select Occupation</option>
-                                                <option value="Business">Business</option>
-                                                <option value="Government Job">Government Job</option>
-                                                <option value="Pension">Pension</option>
-                                                <option value="Farming">Farming</option>
-                                                <option value="Private Job">Private Job</option>
-                                                <option value="Ferry">Ferry</option>
-                                                <option value="Labour">Labour</option>
-                                                <option value="Student">Student</option>
-                                                <option value="Other">Other</option>
-                                            </select>
+                                            <label for="husband-occupation">कार्य</label>
+                                            <select class="form-control occupation-select notranslate" id="husband_occupation">
+                                                    <option selected disabled value>कार्य चुने</option>
+                                                    <option value="कृषि">कृषि</option>
+                                                    <option value="व्यवसाय">व्यवसाय</option>
+                                                    <option value="फेरी">फेरी</option>
+                                                    <option value="श्रमिक">श्रमिक</option>
+                                                    <option value="पेंशन">पेंशन</option>
+                                                    <option value="शासकीया नौकरी">शासकीया नौकरी</option>
+                                                    <option value="प्राइवेट नौकरी">प्राइवेट नौकरी</option>
+                                                    <option value="सेवानिवृत">सेवानिवृत</option>
+                                                    <option value="विद्यार्थी">विद्यार्थी</option>
+                                                    <option value="अन्य">अन्य</option>
+                                                </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4 other-occupation-group" style="display: none;">
                                         <div class="form-group">
-                                            <label for="other-occupation">Occupation Type</label>
-                                            <input type="text" class="form-control other-occupation" id="husband_occupation_type"placeholder="Enter your occupation">
+                                            <label for="other-occupation">कार्य के प्रकार</label>
+                                            <input type="text" class="form-control other-occupation" id="husband_occupation_type"placeholder="अपनी कार्य दर्ज करें">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                                        <label for="">Cast Certificate</label>
+                                        <label for="">जाति प्रमाण पत्र</label>
                                         <div class="input-group role-group mt-1">
                                             <div class="form-check">
-                                                <input type="radio" id="Yes" name="role" value="yes" class="form-check-input">
-                                                <label for="Yes" class="form-check-label">Yes</label>
+                                                <input type="radio" id="Yes" name="role" value="1" class="form-check-input">
+                                                <label for="Yes" class="form-check-label">हाँ</label>
                                             </div>
                                             <div class="form-check">
-                                                <input type="radio" id="No" name="role" value="no" class="form-check-input">
-                                                <label for="No" class="form-check-label">No</label>
+                                                <input type="radio" id="No" name="role" value="0" class="form-check-input">
+                                                <label for="No" class="form-check-label">नहीं</label>
                                             </div>
                                         </div>
                                     </div>
@@ -329,7 +332,7 @@
                                         <div class="upload__box">
                                             <div class="upload__btn-box">
                                                 <label>
-                                                    <p class="upload__btn bg-info w-25 ">Upload images</p>
+                                                    <p class="upload__btn bg-info w-25 ">तश्वीरें अपलोड करो</p>
                                                     <input type="file" multiple="" data-max_length="1" class="upload__inputfile" id="f_file" name="_file">
                                                 </label>
                                             </div>
@@ -341,7 +344,7 @@
                                 </div>
 
                                 <div class="mt-2 text-end">
-                                        <button type="button" class="btn btn-success" id="malechief_submit">submit</button>
+                                        <button type="button" class="btn btn-success" id="malechief_submit">जमा करना</button>
                                     </div>
                             </form>
                         </div>
@@ -349,7 +352,7 @@
                     <!-- Wife Section -->
                     <div class="member-section mt-3 bg-light">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4 class="hading">Female Chief</h4>
+                            <h4 class="hading">महिला मुखिया</h4>
                             <span class="toggle-icon" id="toggle-wife" onclick="toggleSection('wife-section', 'toggle-wife')">+</span>
                         </div>
                         <div id="wife-section" style="display: none;">
@@ -382,215 +385,234 @@
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-name">Name</label>
+                                            <label for="wife-name">नाम</label>
                                             <input type="text" class="form-control" id="wife_name">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-mother-name">Mother's Name</label>
+                                            <label for="wife-mother-name">मां का नाम</label>
                                             <input type="text" class="form-control" id="wife_mother_name">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-father-name">Father's Name</label>
+                                            <label for="wife-father-name">पिता का नाम</label>
                                             <input type="text" class="form-control" id="wife_father_name">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-father-surname">Original Surname</label>
+                                            <label for="wife-husband-name">पति</label>
+                                            <input type="text" class="form-control" id="wife_husband_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 col-md-4 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="wife-father-surname">मूल सरनेम</label>
                                             <input type="text" class="form-control" id="wife_father_surname">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-father-id">Father's ID</label>
+                                            <label for="wife-father-id">पिता आईडी</label>
                                             <input type="text" class="form-control" id="wife_father_id">
                                         </div>
                                     </div>  
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4"> 
                                         <div class="form-group">
-                                            <label for="wife-age">Age</label>
+                                            <label for="wife-age">आयु</label>
                                             <input type="number" class="form-control" id="wife_age">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-dob">Date of Birth</label>
+                                            <label for="wife-dob">जन्म की तारीख</label>
                                             <input type="date" class="form-control" id="wife_dob">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-mobile">Mobile Number</label>
+                                            <label for="wife-mobile">मोबाइल नंबर</label>
                                             <input type="tel" class="form-control" id="wife_mobile">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-relation">Relation with Head of Family</label>
-                                            <input type="text" class="form-control" id="wife_relation" value="Wife" readonly>
+                                            <label for="wife-relation">परिवार के मुखिया के साथ संबंध</label>
+                                            <input type="text" class="form-control" id="wife_relation" value="स्वयं" readonly>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="husband-qualification">Qualification</label>
+                                            <label for="husband-qualification">शिक्षा</label>
                                             <select class="form-control husband-qualification" id="wife_qualification">
-                                            <option selected disabled value>Select Qualification</option>
-                                            <option value="Primary">Primary</option>
-                                            <option value="Secondary">Secondary</option>
-                                            <option value="Higher Secondary">Higher Secondary</option>
-                                            <option value="Graduate">Graduate</option>
-                                            <option value="Post Graduate">Post Graduate</option>
-                                            <option value="Bachelor of Arts (B.A.)">Bachelor of Arts (B.A.)</option>
-                                            <option value="Bachelor of Science (B.Sc.)">Bachelor of Science (B.Sc.)</option>
-                                            <option value="Bachelor of Commerce (B.Com.)">Bachelor of Commerce (B.Com.)</option>
-                                            <option value="Bachelor of Engineering (B.E.)">Bachelor of Engineering (B.E.)</option>
-                                            <option value="Bachelor of Technology (B.Tech.)">Bachelor of Technology (B.Tech.)</option>
-                                            <option value="Bachelor of Medicine, Bachelor of Surgery (MBBS)">Bachelor of Medicine, Bachelor of Surgery (MBBS)</option>
-                                            <option value="Bachelor of Dental Surgery (BDS)">Bachelor of Dental Surgery (BDS)</option>
-                                            <option value="Bachelor of Pharmacy (B.Pharm)">Bachelor of Pharmacy (B.Pharm)</option>
-                                            <option value="Bachelor of Architecture (B.Arch)">Bachelor of Architecture (B.Arch)</option>
-                                            <option value="Bachelor of Business Administration (BBA)">Bachelor of Business Administration (BBA)</option>
-                                            <option value="Bachelor of Computer Applications (BCA)">Bachelor of Computer Applications (BCA)</option>
-                                            <option value="Bachelor of Laws (LLB)">Bachelor of Laws (LLB)</option>
-                                            <option value="Bachelor of Education (B.Ed)">Bachelor of Education (B.Ed)</option>
-                                            <option value="Bachelor of Fine Arts (BFA)">Bachelor of Fine Arts (BFA)</option>
-                                            <option value="Bachelor of Social Work (BSW)">Bachelor of Social Work (BSW)</option>
-                                            <option value="Bachelor of Hotel Management (BHM)">Bachelor of Hotel Management (BHM)</option>
-                                            <option value="Bachelor of Physiotherapy (BPT)">Bachelor of Physiotherapy (BPT)</option>
-                                            <option value="Bachelor of Veterinary Science (BVSc)">Bachelor of Veterinary Science (BVSc)</option>
-                                            <option value="Bachelor of Design (B.Des)">Bachelor of Design (B.Des)</option>
-                                            <option value="Master of Arts (M.A.)">Master of Arts (M.A.)</option>
-                                            <option value="Master of Science (M.Sc.)">Master of Science (M.Sc.)</option>
-                                            <option value="Master of Commerce (M.Com.)">Master of Commerce (M.Com.)</option>
-                                            <option value="Master of Engineering (M.E.)">Master of Engineering (M.E.)</option>
-                                            <option value="Master of Technology (M.Tech.)">Master of Technology (M.Tech.)</option>
-                                            <option value="Master of Business Administration (MBA)">Master of Business Administration (MBA)</option>
-                                            <option value="Master of Computer Applications (MCA)">Master of Computer Applications (MCA)</option>
-                                            <option value="Master of Laws (LLM)">Master of Laws (LLM)</option>
-                                            <option value="Master of Education (M.Ed)">Master of Education (M.Ed)</option>
-                                            <option value="Master of Fine Arts (MFA)">Master of Fine Arts (MFA)</option>
-                                            <option value="Master of Social Work (MSW)">Master of Social Work (MSW)</option>
-                                            <option value="Master of Hospital Administration (MHA)">Master of Hospital Administration (MHA)</option>
-                                            <option value="Master of Public Health (MPH)">Master of Public Health (MPH)</option>
-                                            <option value="Master of Pharmacy (M.Pharm)">Master of Pharmacy (M.Pharm)</option>
-                                            <option value="Master of Design (M.Des)">Master of Design (M.Des)</option>
-                                            <option value="Master of Veterinary Science (MVSc)">Master of Veterinary Science (MVSc)</option>
-                                            <option value="Master of Physiotherapy (MPT)">Master of Physiotherapy (MPT)</option>
-                                            <option value="Doctor of Philosophy (Ph.D.)">Doctor of Philosophy (Ph.D.)</option>
-                                            <option value="Doctor of Medicine (MD)">Doctor of Medicine (MD)</option>
-                                            <option value="Doctor of Dental Surgery (DDS)">Doctor of Dental Surgery (DDS)</option>
-                                            <option value="Doctor of Veterinary Medicine (DVM)">Doctor of Veterinary Medicine (DVM)</option>
-                                            <option value="Diploma in Engineering">Diploma in Engineering</option>
-                                            <option value="Diploma in Pharmacy">Diploma in Pharmacy</option>
-                                            <option value="Diploma in Education (D.Ed)">Diploma in Education (D.Ed)</option>
-                                            <option value="Postgraduate Diploma in Management (PGDM)">Postgraduate Diploma in Management (PGDM)</option>
-                                            <option value="Certificate in Digital Marketing">Certificate in Digital Marketing</option>
-                                            <option value="Certificate in Data Science">Certificate in Data Science</option>
-                                            <option value="Certificate in Graphic Design">Certificate in Graphic Design</option>
-                                            <option value="Other">Other</option>
+                                                <option selected disabled value>शिक्षा चुने</option>
+                                                <option value="प्राथमिक">प्राथमिक</option>
+                                                <option value="माध्यमिक">माध्यमिक</option>
+                                                <option value="उच्च माध्यमिक">उच्च माध्यमिक</option>
+                                                <option value="स्नातक">स्नातक</option>
+                                                <option value="स्नातकोत्तर">स्नातकोत्तर</option>
+                                                <option value="बैचलर ऑफ आर्ट्स (बी.ए.)">बैचलर ऑफ आर्ट्स (बी.ए.)</option>
+                                                <option value="बैचलर ऑफ साइंस (बी.एस्स.)">बैचलर ऑफ साइंस (बी.एस्स.)</option>
+                                                <option value="बैचलर ऑफ कॉमर्स (बी.कॉम.)">बैचलर ऑफ कॉमर्स (बी.कॉम.)</option>
+                                                <option value="बैचलर ऑफ इंजीनियरिंग (बी.ई.)">बैचलर ऑफ इंजीनियरिंग (बी.ई.)</option>
+                                                <option value="बैचलर ऑफ टेक्नोलॉजी (बी.टेक.)">बैचलर ऑफ टेक्नोलॉजी (बी.टेक.)</option>
+                                                <option value="बैचलर ऑफ मेडिसिन, बैचलर ऑफ सर्जरी (एमबीबीएस)">बैचलर ऑफ मेडिसिन, बैचलर ऑफ सर्जरी (एमबीबीएस)</option>
+                                                <option value="बैचलर ऑफ डेंटल सर्जरी (बी.डी.एस.)">बैचलर ऑफ डेंटल सर्जरी (बी.डी.एस.)</option>
+                                                <option value="बैचलर ऑफ फार्मेसी (बी.फार्म.)">बैचलर ऑफ फार्मेसी (बी.फार्म.)</option>
+                                                <option value="बैचलर ऑफ आर्किटेक्चर (बी.आर्क.)">बैचलर ऑफ आर्किटेक्चर (बी.आर्क.)</option>
+                                                <option value="बैचलर ऑफ बिजनेस एडमिनिस्ट्रेशन (बीबीए)">बैचलर ऑफ बिजनेस एडमिनिस्ट्रेशन (बीबीए)</option>
+                                                <option value="बैचलर ऑफ कंप्यूटर एप्लीकेशन्स (बी.सी.ए)">बैचलर ऑफ कंप्यूटर एप्लीकेशन्स (बी.सी.ए)</option>
+                                                <option value="बैचलर ऑफ लॉ (बीएलबी)">बैचलर ऑफ लॉ (बीएलबी)</option>
+                                                <option value="बैचलर ऑफ एजुकेशन (बी.एड.)">बैचलर ऑफ एजुकेशन (बी.एड.)</option>
+                                                <option value="बैचलर ऑफ फाइन आर्ट्स (बीएफए)">बैचलर ऑफ फाइन आर्ट्स (बीएफए)</option>
+                                                <option value="बैचलर ऑफ सोशल वर्क (बी.एस.डब्ल्यू)">बैचलर ऑफ सोशल वर्क (बी.एस.डब्ल्यू)</option>
+                                                <option value="बैचलर ऑफ होटल मैनेजमेंट (बीएचएम)">बैचलर ऑफ होटल मैनेजमेंट (बीएचएम)</option>
+                                                <option value="बैचलर ऑफ फिजियोथेरेपी (बीपीटी)">बैचलर ऑफ फिजियोथेरेपी (बीपीटी)</option>
+                                                <option value="बैचलर ऑफ वेटरनरी साइंस (बीवीएस)">बैचलर ऑफ वेटरनरी साइंस (बीवीएस)</option>
+                                                <option value="बैचलर ऑफ डिजाइन (बी.डिजन)">बैचलर ऑफ डिजाइन (बी.डिजन)</option>
+                                                <option value="मास्टर ऑफ आर्ट्स (एमए)">मास्टर ऑफ आर्ट्स (एमए)</option>
+                                                <option value="मास्टर ऑफ साइंस (एमएससी)">मास्टर ऑफ साइंस (एमएससी)</option>
+                                                <option value="मास्टर ऑफ कॉमर्स (एमकॉम)">मास्टर ऑफ कॉमर्स (एमकॉम)</option>
+                                                <option value="मास्टर ऑफ इंजीनियरिंग (एमई)">मास्टर ऑफ इंजीनियरिंग (एमई)</option>
+                                                <option value="मास्टर ऑफ टेक्नोलॉजी (एमटेक)">मास्टर ऑफ टेक्नोलॉजी (एमटेक)</option>
+                                                <option value="मास्टर ऑफ बिजनेस एडमिनिस्ट्रेशन (एमबीए)">मास्टर ऑफ बिजनेस एडमिनिस्ट्रेशन (एमबीए)</option>
+                                                <option value="मास्टर ऑफ कंप्यूटर एप्लीकेशन्स (एमसीए)">मास्टर ऑफ कंप्यूटर एप्लीकेशन्स (एमसीए)</option>
+                                                <option value="मास्टर ऑफ लॉ (एलएलएम)">मास्टर ऑफ लॉ (एलएलएम)</option>
+                                                <option value="मास्टर ऑफ एजुकेशन (एमएड)">मास्टर ऑफ एजुकेशन (एमएड)</option>
+                                                <option value="मास्टर ऑफ फाइन आर्ट्स (एमएफए)">मास्टर ऑफ फाइन आर्ट्स (एमएफए)</option>
+                                                <option value="मास्टर ऑफ सोशल वर्क (एमएसडब्ल्यू)">मास्टर ऑफ सोशल वर्क (एमएसडब्ल्यू)</option>
+                                                <option value="मास्टर ऑफ हॉस्पिटल एडमिनिस्ट्रेशन (एमएचए)">मास्टर ऑफ हॉस्पिटल एडमिनिस्ट्रेशन (एमएचए)</option>
+                                                <option value="मास्टर ऑफ पब्लिक हेल्थ (एमपीएच)">मास्टर ऑफ पब्लिक हेल्थ (एमपीएच)</option>
+                                                <option value="मास्टर ऑफ फार्मेसी (एमफार्म)">मास्टर ऑफ फार्मेसी (एमफार्म)</option>
+                                                <option value="मास्टर ऑफ डिजाइन (एमडिजन)">मास्टर ऑफ डिजाइन (एमडिजन)</option>
+                                                <option value="मास्टर ऑफ वेटरनरी साइंस (एमवीएस)">मास्टर ऑफ वेटरनरी साइंस (एमवीएस)</option>
+                                                <option value="मास्टर ऑफ फिजियोथेरेपी (एमपीटी)">मास्टर ऑफ फिजियोथेरेपी (एमपीटी)</option>
+                                                <option value="डॉक्टर ऑफ फिलॉसफी">डॉक्टर ऑफ फिलॉसफी</option>
+                                                <option value="डॉक्टर ऑफ मेडिसिन">डॉक्टर ऑफ मेडिसिन</option>
+                                                <option value="डॉक्टर ऑफ डेंटल सर्जरी">डॉक्टर ऑफ डेंटल सर्जरी</option>
+                                                <option value="डॉक्टर ऑफ वेटरनरी मेडिसिन">डॉक्टरेट ऑफ वेटरनरी मेडिसिन (पशु चिकित्सा में)</option>
+                                                <option value="इंजीनियरिंग में डिप्लोमा">इंजीनियरिंग में डिप्लोमा</option>
+                                                <option value="फार्मेसी में डिप्लोमा">फार्मेसी में डिप्लोमा</option>
+                                                <option value="शिक्षा में डिप्लोमा">शिक्षा में डिप्लोमा</option>
+                                                <option value="पोस्टग्रेजुएट डिप्लोमा इन मैनेजमेंट">पोस्टग्रेजुएट डिप्लोमा इन मैनेजमेंट</option>
+                                                <option value="डिजिटल मार्केटिंग में सर्टिफिकेट">डिजिटल मार्केटिंग में सर्टिफिकेट</option>
+                                                <option value="डेटा साइंस में सर्टिफिकेट">डेटा साइंस में सर्टिफिकेट</option>
+                                                <option value="ग्राफिक डिजाइन में सर्टिफिकेट">ग्राफिक डिजाइन में सर्टिफिकेट</option>
+                                                <option value="अन्य">अन्य</option>
                                             </select>
                                         </div>
                                     </div>
+
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4 other-qualification-group" style="display: none;"> <!-- Initially hidden -->
                                         <div class="form-group">
-                                            <label for="other-qualification">Other Qualification</label>
-                                            <input type="text" class="form-control other-qualification" id="wife_other_qualification" placeholder="Enter your qualification">
+                                            <label for="other-qualification">अन्य शिक्षा</label>
+                                            <input type="text" class="form-control other-qualification" id="wife_other_qualification" placeholder="शिक्षा चुने">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-marriage-type">Marriage Type</label>
+                                            <label for="wife-marriage">विवाह</label>
+                                            <select class="form-control" id="wife_marriage" onchange="toggleMarriageType()">
+                                                <option selected disabled value>विवाह चुने</option>
+                                                <option value="1">हाँ</option>
+                                                <option value="0">नहीं</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 col-md-4 col-sm-4" id="marriage_type_wrapper" style="display: none;">
+                                        <div class="form-group">
+                                            <label for="wife-marriage-type">विवाह का प्रकार</label>
                                             <select class="form-control" id="wife_marriage_type">
-                                                <option selected disabled value>Select Marriage Type</option>
-                                                <option>Same Caste</option>
-                                                <option>Other Caste</option>
+                                                <option selected disabled value>विवाह का प्रकार चुने</option>
+                                                <option>सजातीय</option>
+                                                <option>अंतर्जातीय</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-marital-status">Marital Status</label>
+                                            <label for="wife-marital-status">वैवाहिक स्थिति</label>
                                             <select class="form-control" id="wife_marital_status">
-                                                <option selected disabled value>Select Marital Status</option>
-                                                <option>Normal</option>
-                                                <option>Widower</option>
-                                                <option>Divorced</option>
-                                                <option>Parityag</option>
-                                                <option>Chhod Chhutti</option>
+                                                <option selected disabled value>वैवाहिक स्थिति चुने</option>
+                                                <option>सामान्य</option>
+                                                <option>विदुर</option>
+                                                <option>तलाकशुदा</option>
+                                                <option>परित्याग</option>
+                                                <option>छोड़ छुट्टी</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-blood-group">Blood Group</label>
+                                            <label for="wife-blood-group">ब्लड ग्रुप</label>
                                             <select class="form-control" id="wife_blood_group">
-                                                <option selected disabled value>Select Blood Group</option>
-                                                <option>A+</option>
-                                                <option>A-</option>
-                                                <option>B+</option>
-                                                <option>B-</option>
-                                                <option>AB+</option>
-                                                <option>AB-</option>
-                                                <option>O+</option>
-                                                <option>O-</option>
+                                                <option selected disabled value>ब्लड ग्रुप चुने</option>
+                                                <option>ए+</option>
+                                                <option>ए-</option>
+                                                <option>बी+</option>
+                                                <option>बी-</option>
+                                                <option>एबी+</option>
+                                                <option>एबी-</option>
+                                                <option>ओ+</option>
+                                                <option>ओ-</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-total-kids">Total Kids</label>
+                                            <label for="wife-total-kids">बच्चों की कुल संख्या</label>
                                             <input type="number" class="form-control" id="wife_total_kids">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-sons">Sons</label>
+                                            <label for="wife-sons">पुत्र</label>
                                             <input type="number" class="form-control" id="wife_sons">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-daughters">Daughters</label>
+                                            <label for="wife-daughters">पुत्री</label>
                                             <input type="number" class="form-control" id="wife_daughters">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                         <div class="form-group">
-                                            <label for="wife-occupation">Occupation</label>
-                                            <select class="form-control occupation-select" id="wife_occupation">
-                                                <option selected disabled value>Select Occupation</option>
-                                                <option value="Business">Business</option>
-                                                <option value="Government Job">Government Job</option>
-                                                <option value="Pension">Pension</option>
-                                                <option value="Farming">Farming</option>
-                                                <option value="Private Job">Private Job</option>
-                                                <option value="Ferry">Ferry</option>
-                                                <option value="Labour">Labour</option>
-                                                <option value="Student">Student</option>
-                                                <option value="Other">Other</option>
-                                            </select>
+                                            <label for="wife-occupation">कार्य</label>
+                                            <select class="form-control occupation-select notranslate" id="wife_occupation">
+                                                    <option selected disabled value>कार्य चुने</option>
+                                                    <option value="कृषि">कृषि</option>
+                                                    <option value="व्यवसाय">व्यवसाय</option>
+                                                    <option value="फेरी">फेरी</option>
+                                                    <option value="श्रमिक">श्रमिक</option>
+                                                    <option value="पेंशन">पेंशन</option>
+                                                    <option value="शासकीया नौकरी">शासकीया नौकरी</option>
+                                                    <option value="प्राइवेट नौकरी">प्राइवेट नौकरी</option>
+                                                    <option value="गृहिणी">गृहिणी</option>
+                                                    <option value="विद्यार्थी">विद्यार्थी</option>
+                                                    <option value="अन्य">अन्य</option>
+                                                </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4 other-occupation-group" style="display: none;">
                                         <div class="form-group">
-                                            <label for="other-occupation">Occupation Type</label>
-                                            <input type="text" class="form-control other-occupation" id="wife_occupation_type"placeholder="Enter your occupation">
+                                            <label for="other-occupation">कार्य के प्रकार</label>
+                                            <input type="text" class="form-control other-occupation" id="wife_occupation_type"placeholder="अपनी कार्य दर्ज करें">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                                        <label for="">Cast Certificate</label>
+                                        <label for="">जाति प्रमाण पत्र
+                                        </label>
                                         <div class="input-group role-group mt-1">
                                             <div class="form-check">
-                                                <input type="radio" id="Yes" name="role" value="yes" class="form-check-input">
-                                                <label for="Yes" class="form-check-label">Yes</label>
+                                                <input type="radio" id="Yes" name="role" value="1" class="form-check-input">
+                                                <label for="Yes" class="form-check-label">हाँ</label>
                                             </div>
                                             <div class="form-check">
-                                                <input type="radio" id="No" name="role" value="no" class="form-check-input">
-                                                <label for="No" class="form-check-label">No</label>
+                                                <input type="radio" id="No" name="role" value="0" class="form-check-input">
+                                                <label for="No" class="form-check-label">नहीं</label>
                                             </div>
                                         </div>
                                     </div>
@@ -598,7 +620,7 @@
                                         <div class="upload__box">
                                             <div class="upload__btn-box">
                                                 <label>
-                                                    <p class="upload__btn bg-info w-25 ">Upload images</p>
+                                                    <p class="upload__btn bg-info w-25 ">तश्वीरें अपलोड करो</p>
                                                     <input type="file" multiple="" data-max_length="1" class="upload__inputfile" id="wife_f_file" name="_file">
                                                 </label>
                                             </div>
@@ -609,7 +631,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-2 text-end">
-                                        <button type="button" class="btn btn-success" id="femalechief_submit" >submit</button>
+                                        <button type="button" class="btn btn-success" id="femalechief_submit" >जमा करना</button>
                                     </div>
                             </form>
                         </div>
@@ -618,19 +640,19 @@
                     <!-- Children Section -->
                     <div class="member-section bg-light">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4 class="hading">Unmarried Children</h4>
+                            <h4 class="hading">अविवाहित बच्चे</h4>
                             <span class="toggle-icon" id="toggle-children" onclick="toggleSection('children-section', 'toggle-children')">+</span>
                         </div>
                         <div id="children-section" style="display: none;">
                             <form id="children-form">
                                 <div id="children-entries">
                                     <div class="child-entry mb-3" id="child-1">
-                                        <h5>Child 1</h5>
+                                        <h5 class="">क्रमांक 1</h5>
                                         <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4" hidden>
                                                 <div class="form-group">
                                                     <label for="husband-id">ID Number</label>
-                                                    <input type="text" class="form-control" id="child-numner-id"value="">
+                                                    <input type="text" class="form-control" id="child-numner-id">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4" hidden>
@@ -653,165 +675,165 @@
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="child1-name">Name</label>
+                                                    <label for="child1-name">नाम</label>
                                                     <input type="text" class="form-control" id="child1-name">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="child1-age">Age</label>
+                                                    <label for="child1-age">आयु</label>
                                                     <input type="number" class="form-control" id="child1-age">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="child1-dob">Date of Birth</label>
+                                                    <label for="child1-dob">जन्म की तारीख</label>
                                                     <input type="date" class="form-control" id="child1-dob">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="child1-mobile">Mobile Number</label>
+                                                    <label for="child1-mobile">मोबाइल नंबर</label>
                                                     <input type="tel" class="form-control" id="child1-mobile">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="child1-relation">Relation with Head of Family</label>
+                                                    <label for="child1-relation">परिवार के मुखिया के साथ संबंध</label>
                                                     <select class="form-control" id="child1-relation">
-                                                        <option selected disabled value>Select Relation</option>
-                                                        <option>Son</option>
-                                                        <option>Daughter</option>
+                                                        <option selected disabled value>संबंध चुने</option>
+                                                        <option value="पुत्र">पुत्र</option>
+                                                        <option value="पुत्री">पुत्री</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="husband-qualification">Qualification</label>
+                                                    <label for="husband-qualification">शिक्षा</label>
                                                     <select class="form-control husband-qualification" id="child-qualification">
-                                                    <option selected disabled value>Select Qualification</option>
-                                                    <option value="Primary">Primary</option>
-                                                    <option value="Secondary">Secondary</option>
-                                                    <option value="Higher Secondary">Higher Secondary</option>
-                                                    <option value="Graduate">Graduate</option>
-                                                    <option value="Post Graduate">Post Graduate</option>
-                                                    <option value="Bachelor of Arts (B.A.)">Bachelor of Arts (B.A.)</option>
-                                                    <option value="Bachelor of Science (B.Sc.)">Bachelor of Science (B.Sc.)</option>
-                                                    <option value="Bachelor of Commerce (B.Com.)">Bachelor of Commerce (B.Com.)</option>
-                                                    <option value="Bachelor of Engineering (B.E.)">Bachelor of Engineering (B.E.)</option>
-                                                    <option value="Bachelor of Technology (B.Tech.)">Bachelor of Technology (B.Tech.)</option>
-                                                    <option value="Bachelor of Medicine, Bachelor of Surgery (MBBS)">Bachelor of Medicine, Bachelor of Surgery (MBBS)</option>
-                                                    <option value="Bachelor of Dental Surgery (BDS)">Bachelor of Dental Surgery (BDS)</option>
-                                                    <option value="Bachelor of Pharmacy (B.Pharm)">Bachelor of Pharmacy (B.Pharm)</option>
-                                                    <option value="Bachelor of Architecture (B.Arch)">Bachelor of Architecture (B.Arch)</option>
-                                                    <option value="Bachelor of Business Administration (BBA)">Bachelor of Business Administration (BBA)</option>
-                                                    <option value="Bachelor of Computer Applications (BCA)">Bachelor of Computer Applications (BCA)</option>
-                                                    <option value="Bachelor of Laws (LLB)">Bachelor of Laws (LLB)</option>
-                                                    <option value="Bachelor of Education (B.Ed)">Bachelor of Education (B.Ed)</option>
-                                                    <option value="Bachelor of Fine Arts (BFA)">Bachelor of Fine Arts (BFA)</option>
-                                                    <option value="Bachelor of Social Work (BSW)">Bachelor of Social Work (BSW)</option>
-                                                    <option value="Bachelor of Hotel Management (BHM)">Bachelor of Hotel Management (BHM)</option>
-                                                    <option value="Bachelor of Physiotherapy (BPT)">Bachelor of Physiotherapy (BPT)</option>
-                                                    <option value="Bachelor of Veterinary Science (BVSc)">Bachelor of Veterinary Science (BVSc)</option>
-                                                    <option value="Bachelor of Design (B.Des)">Bachelor of Design (B.Des)</option>
-                                                    <option value="Master of Arts (M.A.)">Master of Arts (M.A.)</option>
-                                                    <option value="Master of Science (M.Sc.)">Master of Science (M.Sc.)</option>
-                                                    <option value="Master of Commerce (M.Com.)">Master of Commerce (M.Com.)</option>
-                                                    <option value="Master of Engineering (M.E.)">Master of Engineering (M.E.)</option>
-                                                    <option value="Master of Technology (M.Tech.)">Master of Technology (M.Tech.)</option>
-                                                    <option value="Master of Business Administration (MBA)">Master of Business Administration (MBA)</option>
-                                                    <option value="Master of Computer Applications (MCA)">Master of Computer Applications (MCA)</option>
-                                                    <option value="Master of Laws (LLM)">Master of Laws (LLM)</option>
-                                                    <option value="Master of Education (M.Ed)">Master of Education (M.Ed)</option>
-                                                    <option value="Master of Fine Arts (MFA)">Master of Fine Arts (MFA)</option>
-                                                    <option value="Master of Social Work (MSW)">Master of Social Work (MSW)</option>
-                                                    <option value="Master of Hospital Administration (MHA)">Master of Hospital Administration (MHA)</option>
-                                                    <option value="Master of Public Health (MPH)">Master of Public Health (MPH)</option>
-                                                    <option value="Master of Pharmacy (M.Pharm)">Master of Pharmacy (M.Pharm)</option>
-                                                    <option value="Master of Design (M.Des)">Master of Design (M.Des)</option>
-                                                    <option value="Master of Veterinary Science (MVSc)">Master of Veterinary Science (MVSc)</option>
-                                                    <option value="Master of Physiotherapy (MPT)">Master of Physiotherapy (MPT)</option>
-                                                    <option value="Doctor of Philosophy (Ph.D.)">Doctor of Philosophy (Ph.D.)</option>
-                                                    <option value="Doctor of Medicine (MD)">Doctor of Medicine (MD)</option>
-                                                    <option value="Doctor of Dental Surgery (DDS)">Doctor of Dental Surgery (DDS)</option>
-                                                    <option value="Doctor of Veterinary Medicine (DVM)">Doctor of Veterinary Medicine (DVM)</option>
-                                                    <option value="Diploma in Engineering">Diploma in Engineering</option>
-                                                    <option value="Diploma in Pharmacy">Diploma in Pharmacy</option>
-                                                    <option value="Diploma in Education (D.Ed)">Diploma in Education (D.Ed)</option>
-                                                    <option value="Postgraduate Diploma in Management (PGDM)">Postgraduate Diploma in Management (PGDM)</option>
-                                                    <option value="Certificate in Digital Marketing">Certificate in Digital Marketing</option>
-                                                    <option value="Certificate in Data Science">Certificate in Data Science</option>
-                                                    <option value="Certificate in Graphic Design">Certificate in Graphic Design</option>
-                                                    <option value="Other">Other</option>
+                                                        <option selected disabled value>शिक्षा चुने</option>
+                                                        <option value="प्राथमिक">प्राथमिक</option>
+                                                        <option value="माध्यमिक">माध्यमिक</option>
+                                                        <option value="उच्च माध्यमिक">उच्च माध्यमिक</option>
+                                                        <option value="स्नातक">स्नातक</option>
+                                                        <option value="स्नातकोत्तर">स्नातकोत्तर</option>
+                                                        <option value="बैचलर ऑफ आर्ट्स (बी.ए.)">बैचलर ऑफ आर्ट्स (बी.ए.)</option>
+                                                        <option value="बैचलर ऑफ साइंस (बी.एस्स.)">बैचलर ऑफ साइंस (बी.एस्स.)</option>
+                                                        <option value="बैचलर ऑफ कॉमर्स (बी.कॉम.)">बैचलर ऑफ कॉमर्स (बी.कॉम.)</option>
+                                                        <option value="बैचलर ऑफ इंजीनियरिंग (बी.ई.)">बैचलर ऑफ इंजीनियरिंग (बी.ई.)</option>
+                                                        <option value="बैचलर ऑफ टेक्नोलॉजी (बी.टेक.)">बैचलर ऑफ टेक्नोलॉजी (बी.टेक.)</option>
+                                                        <option value="बैचलर ऑफ मेडिसिन, बैचलर ऑफ सर्जरी (एमबीबीएस)">बैचलर ऑफ मेडिसिन, बैचलर ऑफ सर्जरी (एमबीबीएस)</option>
+                                                        <option value="बैचलर ऑफ डेंटल सर्जरी (बी.डी.एस.)">बैचलर ऑफ डेंटल सर्जरी (बी.डी.एस.)</option>
+                                                        <option value="बैचलर ऑफ फार्मेसी (बी.फार्म.)">बैचलर ऑफ फार्मेसी (बी.फार्म.)</option>
+                                                        <option value="बैचलर ऑफ आर्किटेक्चर (बी.आर्क.)">बैचलर ऑफ आर्किटेक्चर (बी.आर्क.)</option>
+                                                        <option value="बैचलर ऑफ बिजनेस एडमिनिस्ट्रेशन (बीबीए)">बैचलर ऑफ बिजनेस एडमिनिस्ट्रेशन (बीबीए)</option>
+                                                        <option value="बैचलर ऑफ कंप्यूटर एप्लीकेशन्स (बी.सी.ए)">बैचलर ऑफ कंप्यूटर एप्लीकेशन्स (बी.सी.ए)</option>
+                                                        <option value="बैचलर ऑफ लॉ (बीएलबी)">बैचलर ऑफ लॉ (बीएलबी)</option>
+                                                        <option value="बैचलर ऑफ एजुकेशन (बी.एड.)">बैचलर ऑफ एजुकेशन (बी.एड.)</option>
+                                                        <option value="बैचलर ऑफ फाइन आर्ट्स (बीएफए)">बैचलर ऑफ फाइन आर्ट्स (बीएफए)</option>
+                                                        <option value="बैचलर ऑफ सोशल वर्क (बी.एस.डब्ल्यू)">बैचलर ऑफ सोशल वर्क (बी.एस.डब्ल्यू)</option>
+                                                        <option value="बैचलर ऑफ होटल मैनेजमेंट (बीएचएम)">बैचलर ऑफ होटल मैनेजमेंट (बीएचएम)</option>
+                                                        <option value="बैचलर ऑफ फिजियोथेरेपी (बीपीटी)">बैचलर ऑफ फिजियोथेरेपी (बीपीटी)</option>
+                                                        <option value="बैचलर ऑफ वेटरनरी साइंस (बीवीएस)">बैचलर ऑफ वेटरनरी साइंस (बीवीएस)</option>
+                                                        <option value="बैचलर ऑफ डिजाइन (बी.डिजन)">बैचलर ऑफ डिजाइन (बी.डिजन)</option>
+                                                        <option value="मास्टर ऑफ आर्ट्स (एमए)">मास्टर ऑफ आर्ट्स (एमए)</option>
+                                                        <option value="मास्टर ऑफ साइंस (एमएससी)">मास्टर ऑफ साइंस (एमएससी)</option>
+                                                        <option value="मास्टर ऑफ कॉमर्स (एमकॉम)">मास्टर ऑफ कॉमर्स (एमकॉम)</option>
+                                                        <option value="मास्टर ऑफ इंजीनियरिंग (एमई)">मास्टर ऑफ इंजीनियरिंग (एमई)</option>
+                                                        <option value="मास्टर ऑफ टेक्नोलॉजी (एमटेक)">मास्टर ऑफ टेक्नोलॉजी (एमटेक)</option>
+                                                        <option value="मास्टर ऑफ बिजनेस एडमिनिस्ट्रेशन (एमबीए)">मास्टर ऑफ बिजनेस एडमिनिस्ट्रेशन (एमबीए)</option>
+                                                        <option value="मास्टर ऑफ कंप्यूटर एप्लीकेशन्स (एमसीए)">मास्टर ऑफ कंप्यूटर एप्लीकेशन्स (एमसीए)</option>
+                                                        <option value="मास्टर ऑफ लॉ (एलएलएम)">मास्टर ऑफ लॉ (एलएलएम)</option>
+                                                        <option value="मास्टर ऑफ एजुकेशन (एमएड)">मास्टर ऑफ एजुकेशन (एमएड)</option>
+                                                        <option value="मास्टर ऑफ फाइन आर्ट्स (एमएफए)">मास्टर ऑफ फाइन आर्ट्स (एमएफए)</option>
+                                                        <option value="मास्टर ऑफ सोशल वर्क (एमएसडब्ल्यू)">मास्टर ऑफ सोशल वर्क (एमएसडब्ल्यू)</option>
+                                                        <option value="मास्टर ऑफ हॉस्पिटल एडमिनिस्ट्रेशन (एमएचए)">मास्टर ऑफ हॉस्पिटल एडमिनिस्ट्रेशन (एमएचए)</option>
+                                                        <option value="मास्टर ऑफ पब्लिक हेल्थ (एमपीएच)">मास्टर ऑफ पब्लिक हेल्थ (एमपीएच)</option>
+                                                        <option value="मास्टर ऑफ फार्मेसी (एमफार्म)">मास्टर ऑफ फार्मेसी (एमफार्म)</option>
+                                                        <option value="मास्टर ऑफ डिजाइन (एमडिजन)">मास्टर ऑफ डिजाइन (एमडिजन)</option>
+                                                        <option value="मास्टर ऑफ वेटरनरी साइंस (एमवीएस)">मास्टर ऑफ वेटरनरी साइंस (एमवीएस)</option>
+                                                        <option value="मास्टर ऑफ फिजियोथेरेपी (एमपीटी)">मास्टर ऑफ फिजियोथेरेपी (एमपीटी)</option>
+                                                        <option value="डॉक्टर ऑफ फिलॉसफी">डॉक्टर ऑफ फिलॉसफी</option>
+                                                        <option value="डॉक्टर ऑफ मेडिसिन">डॉक्टर ऑफ मेडिसिन</option>
+                                                        <option value="डॉक्टर ऑफ डेंटल सर्जरी">डॉक्टर ऑफ डेंटल सर्जरी</option>
+                                                        <option value="डॉक्टर ऑफ वेटरनरी मेडिसिन">डॉक्टरेट ऑफ वेटरनरी मेडिसिन (पशु चिकित्सा में)</option>
+                                                        <option value="इंजीनियरिंग में डिप्लोमा">इंजीनियरिंग में डिप्लोमा</option>
+                                                        <option value="फार्मेसी में डिप्लोमा">फार्मेसी में डिप्लोमा</option>
+                                                        <option value="शिक्षा में डिप्लोमा">शिक्षा में डिप्लोमा</option>
+                                                        <option value="पोस्टग्रेजुएट डिप्लोमा इन मैनेजमेंट">पोस्टग्रेजुएट डिप्लोमा इन मैनेजमेंट</option>
+                                                        <option value="डिजिटल मार्केटिंग में सर्टिफिकेट">डिजिटल मार्केटिंग में सर्टिफिकेट</option>
+                                                        <option value="डेटा साइंस में सर्टिफिकेट">डेटा साइंस में सर्टिफिकेट</option>
+                                                        <option value="ग्राफिक डिजाइन में सर्टिफिकेट">ग्राफिक डिजाइन में सर्टिफिकेट</option>
+                                                        <option value="अन्य">अन्य</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4 other-qualification-group" style="display: none;"> 
                                                 <div class="form-group">
-                                                    <label for="other-qualification">Other Qualification</label>
-                                                    <input type="text" class="form-control other-qualification" placeholder="Enter your qualification" id="childother-qualification">
+                                                    <label for="other-qualification">अन्य शिक्षा</label>
+                                                    <input type="text" class="form-control other-qualification" placeholder="शिक्षा का चयन करें" id="childother-qualification">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="child1-marriage-stage">Marriage Stage</label>
+                                                    <label for="child1-marriage-stage">विवाह चरण</label>
                                                     <select class="form-control" id="child1-marriage-stage">
-                                                        <option selected disabled value>Select Marriage Stage</option>
-                                                        <option>Unmarried</option>
-                                                        <option>Tika</option>
-                                                        <option>Engaged</option>
+                                                        <option selected disabled value>विवाह चरण चुने</option>
+                                                        <option>अविवाहित</option>
+                                                        <option>टीका</option>
+                                                        <option>सागाई</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="child1-blood-group">Blood Group</label>
+                                                    <label for="child1-blood-group">ब्लड ग्रुप</label>
                                                     <select class="form-control" id="child1-blood-group">
-                                                        <option selected disabled value>Select Blood Group</option>
-                                                        <option>A+</option>
-                                                        <option>A-</option>
-                                                        <option>B+</option>
-                                                        <option>B-</option>
-                                                        <option>AB+</option>
-                                                        <option>AB-</option>
-                                                        <option>O+</option>
-                                                        <option>O-</option>
+                                                        <option selected disabled value>ब्लड ग्रुप चुने</option>
+                                                        <option>ए+</option>
+                                                        <option>ए-</option>
+                                                        <option>बी+</option>
+                                                        <option>बी-</option>
+                                                        <option>एबी+</option>
+                                                        <option>एबी-</option>
+                                                        <option>ओ+</option>
+                                                        <option>ओ-</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                             <div class="form-group">
-                                                <label for="wife-occupation">Occupation</label>
+                                                <label for="child-occupation">कार्य</label>
                                                 <select class="form-control occupation-select" id="child-occupation">
-                                                    <option selected disabled value>Select Occupation</option>
-                                                    <option value="Business">Business</option>
-                                                    <option value="Government Job">Government Job</option>
-                                                    <option value="Pension">Pension</option>
-                                                    <option value="Farming">Farming</option>
-                                                    <option value="Private Job">Private Job</option>
-                                                    <option value="Ferry">Ferry</option>
-                                                    <option value="Labour">Labour</option>
-                                                    <option value="Student">Student</option>
-                                                    <option value="Other">Other</option>
+                                                    <option selected disabled value>चुने कार्य</option>
+                                                    <option value="कृषि">कृषि</option>
+                                                    <option value="व्यवसाय">व्यवसाय</option>
+                                                    <option value="फेरी">फेरी</option>
+                                                    <option value="श्रमिक">श्रमिक</option>
+                                                    <option value="पेंशन">पेंशन</option>
+                                                    <option value="शासकीया नौकरी">शासकीया नौकरी</option>
+                                                    <option value="प्राइवेट नौकरी">प्राइवेट नौकरी</option>
+                                                    <option value="विद्यार्थी">विद्यार्थी</option>
+                                                    <option value="अन्य">अन्य</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-4 col-md-4 col-sm-4 other-occupation-group" style="display: none;">
                                             <div class="form-group">
-                                                <label for="childother-occupation">Occupation Type</label>
-                                                <input type="text" class="form-control other-occupation" id="childother-occupation-type"placeholder="Enter your occupation">
+                                                <label for="childother-occupation">अन्य कार्य</label>
+                                                <input type="text" class="form-control other-occupation" id="childother-occupation-type"placeholder="अपनी कार्य दर्ज करें">
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                                            <label for="">Cast Certificate</label>
+                                            <label for="">जाति प्रमाण पत्र</label>
                                             <div class="input-group role-group mt-1">
                                                 <div class="form-check">
-                                                    <input type="radio" id="Yes" name="role" value="yes" class="form-check-input">
-                                                    <label for="Yes" class="form-check-label">Yes</label>
+                                                    <input type="radio" id="Yes" name="role" value="1" class="form-check-input">
+                                                    <label for="Yes" class="form-check-label">हाँ</label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input type="radio" id="No" name="role" value="no" class="form-check-input">
-                                                    <label for="No" class="form-check-label">No</label>
+                                                    <input type="radio" id="No" name="role" value="0" class="form-check-input">
+                                                    <label for="No" class="form-check-label">नहीं</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -819,78 +841,67 @@
                                             <div class="upload__box">
                                                 <div class="upload__btn-box">
                                                     <label>
-                                                        <p class="upload__btn bg-info w-25 ">Upload images</p>
+                                                        <p class="upload__btn bg-info w-25 ">तश्वीरें अपलोड करो</p>
                                                         <input type="file" multiple="" data-max_length="1" class="upload__inputfile" id="child-file" name="_file">
                                                     </label>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <div class="upload__img-wrap" style="display:flex; flex-wrap:wrap;"></div>
+                                                    <div class="upload__img-wrap" id="" style="display:flex; flex-wrap:wrap;"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-info" onclick="addChild()">Add Child</button>
+                                <button type="button" class="btn btn-info" onclick="addChild()">जोडे</button>
                                 <!-- <button type="button" class="btn btn-danger" onclick="removeChild()">Remove</button> -->
 
                                     <div class="mt-2 text-end">
-                                        <button type="button" class="btn btn-success" id="child_subm" onclick="store2(event)" >submit</button>
+                                        <button type="button" class="btn btn-success" id="child_subm" onclick="store2(event)" >जमा करना</button>
                                     </div>
                             </form>
                         </div>
                     </div>
                     <div class="member-section mt-3 bg-light">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4 class="hading">Married Children</h4>
+                            <h4 class="hading">विवाहित बच्चे</h4>
                             <span class="toggle-icon" id="married_toggle-children" onclick="toggleSection('married_children-section', 'married_toggle-children')">+</span>
                         </div>
                         <div id="married_children-section" style="display: none;">
                             <form id="married_children-form">
                                 <div id="married_children-entries">
                                     <div class="Married_child-entry mb-3" id="married_child-1">
-                                        <h5>Married Child 1</h5>
+                                        <h5>क्रमांक 1</h5>
                                         <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4" >
                                             <div class="form-group">
-                                                    <label for="married_child1-name">Name</label>
+                                                    <label for="married_child1-name">नाम</label>
                                                     <input type="text" class="form-control" id="married_child1-name">
                                                 </div>
                                           
                                             </div>
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4" >
                                             <div class="form-group">
-                                                    <label for="married-child-numner-id">ID Number</label>
-                                                    <input type="text" class="form-control" id="married-child-numner-id"value="">
+                                                    <label for="married_child1-address">निवासी</label>
+                                                    <input type="text" class="form-control" id="married_child1-address">
+                                                </div>
+                                          
+                                            </div>
+                                            <div class="col-12 col-lg-4 col-md-4 col-sm-4" >
+                                            <div class="form-group">
+                                                    <label for="married-child-numner-id">आईडी नंबर</label>
+                                                    <input type="text" class="form-control" id="married-child-numner-id">
                                                 </div>
                                                 <div class="form-group" hidden>
                                                     <label for="married-child-family-id">family_id</label>
                                                     <input type="text" class="form-control" id="married-child-family-id"value="">
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                                                <!-- <div class="form-group">
-                                                    <label for="married_child1-name">Name</label>
-                                                    <input type="text" class="form-control" id="married_child1-name">
-                                                </div> -->
-                                            </div>
-                                            <!-- <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                                                <div class="upload__box">
-                                                    <div class="upload__btn-box">
-                                                        <label>
-                                                            <p class="upload__btn bg-info w-25 ">Upload images</p>
-                                                            <input type="file" multiple="" data-max_length="3" class="upload__inputfile" id="child-marrid-file" name="_file">
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-sm-12">
-                                                        <div class="upload__img-wrap" style="display:flex; flex-wrap:wrap;"></div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+                                          
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                                                 <div class="upload__box">
                                                     <div class="upload__btn-box">
                                                         <label>
-                                                            <p class="upload__btn bg-info w-25 ">Upload images</p>
+                                                            <p class="upload__btn bg-info w-25 ">तश्वीरें अपलोड करो</p>
                                                             <input type="file" multiple="" data-max_length="1" class="upload__inputfile" id="child-marrid-file" name="_file">
                                                         </label>
                                                     </div>
@@ -915,9 +926,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-info" onclick="addMarriedChild()">Add Married Child</button>
+                                <button type="button" class="btn btn-info" onclick="addMarriedChild()">जोडे</button>
                                 <div class="mt-2 text-end">
-                                    <button type="button" class="btn btn-success" onclick="store3(event)">submit</button>
+                                    <button type="button" class="btn btn-success" onclick="store3(event)">जमा करना</button>
                                 </div>
                             </form>
                         </div>
@@ -926,7 +937,9 @@
             </div>
         </div>        
     </div>
-    
+    <div class="mt-2 text-end pb-5">
+        <button type="button" class="btn btn-info" id="backhome">पिछे जाये</button>
+    </div>
 </body>
 </html>
 
@@ -941,7 +954,15 @@
         }
     }
 </script>
-
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("backhome").addEventListener("click", function() {
+                if (confirm( "Are you sure you want to go back from this page? Once you go back, you will never get this page again and you won't be update the details.")) {
+                    window.location.href = "census_data.php";
+                }
+            });
+        });
+    </script>
 <script>
     $(document).ready(function() {
     $('.occupation-select').change(function() {
@@ -957,7 +978,7 @@
     $(document).ready(function() {
     $('.husband-qualification').change(function() {
       var selectedQualification = $(this).val();
-      if (selectedQualification === 'Other') {
+      if (selectedQualification === 'अन्य') {
         $('.other-qualification-group').show(); // Show the input field
       } else {
         $('.other-qualification-group').hide(); // Hide the input field
@@ -966,6 +987,26 @@
     });
   });
  
+  function toggleMarriageType() {
+    var marriageSelect = document.getElementById("wife_marriage");
+    var marriageTypeWrapper = document.getElementById("marriage_type_wrapper");
+
+    if (marriageSelect.value === "1") {
+        marriageTypeWrapper.style.display = "block";
+    } else {
+        marriageTypeWrapper.style.display = "none";
+    }
+}
+function toggleHusMarriageType() {
+    var marriageSelect = document.getElementById("husband_marriage");
+    var marriageTypeWrapper = document.getElementById("husband_marriage_type_wrapper");
+
+    if (marriageSelect.value === "1") {
+        marriageTypeWrapper.style.display = "block";
+    } else {
+        marriageTypeWrapper.style.display = "none";
+    }
+}
 </script>
 <script>
     function toggleSection(sectionId, toggleIconId) {
@@ -999,7 +1040,7 @@
             newChildEntry.className = 'child-entry mb-3';
             newChildEntry.id = `child-${childCount}`;
             newChildEntry.innerHTML = `
-                <h5>Child ${childCount}</h5>
+                <h5>क्रमांक ${childCount}</h5>
                 <div class="row">
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4" hidden>
                         <div class="form-group">
@@ -1027,164 +1068,165 @@
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                         <div class="form-group">
-                            <label for="child${childCount}-name">Name</label>
+                            <label for="child${childCount}-name">नाम</label>
                             <input type="text" class="form-control" id="child${childCount}-name">
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                         <div class="form-group">
-                            <label for="child${childCount}-age">Age</label>
+                            <label for="child${childCount}-age">आयु</label>
                             <input type="number" class="form-control" id="child${childCount}-age">
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                         <div class="form-group">
-                            <label for="child${childCount}-dob">Date of Birth</label>
+                            <label for="child${childCount}-dob">जन्म की तारीख</label>
                             <input type="date" class="form-control" id="child${childCount}-dob">
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                         <div class="form-group">
-                            <label for="child${childCount}-mobile">Mobile Number</label>
+                            <label for="child${childCount}-mobile">मोबाइल नंबर</label>
                             <input type="tel" class="form-control" id="child${childCount}-mobile">
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                         <div class="form-group">
-                            <label for="child${childCount}-relation">Relation with Head of Family</label>
+                            <label for="child${childCount}-relation">परिवार के मुखिया के साथ संबंध</label>
                             <select class="form-control" id="child${childCount}-relation">
-                                <option selected disabled value>Select Relation</option>
-                                <option>Son</option>
-                                <option>Daughter</option>
+                                <option selected disabled value>संबंध चुने</option>
+                                <option value="पुत्र">पुत्र</option>
+                                <option value="पुत्री">पुत्री</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                         <div class="form-group">
-                            <label for="child${childCount}-qualification">Qualification</label>
+                            <label for="child${childCount}-qualification">शिक्षा</label>
                             <select class="form-control" id="child${childCount}-qualification">
-                                <option selected disabled value>Select Qualification</option>
-                                <option value="Primary">Primary</option>
-                                <option value="Secondary">Secondary</option>
-                                <option value="Higher Secondary">Higher Secondary</option>
-                                <option value="Graduate">Graduate</option>
-                                <option value="Post Graduate">Post Graduate</option>
-                                <option value="Bachelor of Arts (B.A.)">Bachelor of Arts (B.A.)</option>
-                                <option value="Bachelor of Science (B.Sc.)">Bachelor of Science (B.Sc.)</option>
-                                <option value="Bachelor of Commerce (B.Com.)">Bachelor of Commerce (B.Com.)</option>
-                                <option value="Bachelor of Engineering (B.E.)">Bachelor of Engineering (B.E.)</option>
-                                <option value="Bachelor of Technology (B.Tech.)">Bachelor of Technology (B.Tech.)</option>
-                                <option value="Bachelor of Medicine, Bachelor of Surgery (MBBS)">Bachelor of Medicine, Bachelor of Surgery (MBBS)</option>
-                                <option value="Bachelor of Dental Surgery (BDS)">Bachelor of Dental Surgery (BDS)</option>
-                                <option value="Bachelor of Pharmacy (B.Pharm)">Bachelor of Pharmacy (B.Pharm)</option>
-                                <option value="Bachelor of Architecture (B.Arch)">Bachelor of Architecture (B.Arch)</option>
-                                <option value="Bachelor of Business Administration (BBA)">Bachelor of Business Administration (BBA)</option>
-                                <option value="Bachelor of Computer Applications (BCA)">Bachelor of Computer Applications (BCA)</option>
-                                <option value="Bachelor of Laws (LLB)">Bachelor of Laws (LLB)</option>
-                                <option value="Bachelor of Education (B.Ed)">Bachelor of Education (B.Ed)</option>
-                                <option value="Bachelor of Fine Arts (BFA)">Bachelor of Fine Arts (BFA)</option>
-                                <option value="Bachelor of Social Work (BSW)">Bachelor of Social Work (BSW)</option>
-                                <option value="Bachelor of Hotel Management (BHM)">Bachelor of Hotel Management (BHM)</option>
-                                <option value="Bachelor of Physiotherapy (BPT)">Bachelor of Physiotherapy (BPT)</option>
-                                <option value="Bachelor of Veterinary Science (BVSc)">Bachelor of Veterinary Science (BVSc)</option>
-                                <option value="Bachelor of Design (B.Des)">Bachelor of Design (B.Des)</option>
-                                <option value="Master of Arts (M.A.)">Master of Arts (M.A.)</option>
-                                <option value="Master of Science (M.Sc.)">Master of Science (M.Sc.)</option>
-                                <option value="Master of Commerce (M.Com.)">Master of Commerce (M.Com.)</option>
-                                <option value="Master of Engineering (M.E.)">Master of Engineering (M.E.)</option>
-                                <option value="Master of Technology (M.Tech.)">Master of Technology (M.Tech.)</option>
-                                <option value="Master of Business Administration (MBA)">Master of Business Administration (MBA)</option>
-                                <option value="Master of Computer Applications (MCA)">Master of Computer Applications (MCA)</option>
-                                <option value="Master of Laws (LLM)">Master of Laws (LLM)</option>
-                                <option value="Master of Education (M.Ed)">Master of Education (M.Ed)</option>
-                                <option value="Master of Fine Arts (MFA)">Master of Fine Arts (MFA)</option>
-                                <option value="Master of Social Work (MSW)">Master of Social Work (MSW)</option>
-                                <option value="Master of Hospital Administration (MHA)">Master of Hospital Administration (MHA)</option>
-                                <option value="Master of Public Health (MPH)">Master of Public Health (MPH)</option>
-                                <option value="Master of Pharmacy (M.Pharm)">Master of Pharmacy (M.Pharm)</option>
-                                <option value="Master of Design (M.Des)">Master of Design (M.Des)</option>
-                                <option value="Master of Veterinary Science (MVSc)">Master of Veterinary Science (MVSc)</option>
-                                <option value="Master of Physiotherapy (MPT)">Master of Physiotherapy (MPT)</option>
-                                <option value="Doctor of Philosophy (Ph.D.)">Doctor of Philosophy (Ph.D.)</option>
-                                <option value="Doctor of Medicine (MD)">Doctor of Medicine (MD)</option>
-                                <option value="Doctor of Dental Surgery (DDS)">Doctor of Dental Surgery (DDS)</option>
-                                <option value="Doctor of Veterinary Medicine (DVM)">Doctor of Veterinary Medicine (DVM)</option>
-                                <option value="Diploma in Engineering">Diploma in Engineering</option>
-                                <option value="Diploma in Pharmacy">Diploma in Pharmacy</option>
-                                <option value="Diploma in Education (D.Ed)">Diploma in Education (D.Ed)</option>
-                                <option value="Postgraduate Diploma in Management (PGDM)">Postgraduate Diploma in Management (PGDM)</option>
-                                <option value="Certificate in Digital Marketing">Certificate in Digital Marketing</option>
-                                <option value="Certificate in Data Science">Certificate in Data Science</option>
-                                <option value="Certificate in Graphic Design">Certificate in Graphic Design</option>
-                                <option value="Other">Other</option>
+                                <option selected disabled value>शिक्षा चुने</option>
+                                <option value="प्राथमिक">प्राथमिक</option>
+                                <option value="माध्यमिक">माध्यमिक</option>
+                                <option value="उच्च माध्यमिक">उच्च माध्यमिक</option>
+                                <option value="स्नातक">स्नातक</option>
+                                <option value="स्नातकोत्तर">स्नातकोत्तर</option>
+                                <option value="बैचलर ऑफ आर्ट्स (बी.ए.)">बैचलर ऑफ आर्ट्स (बी.ए.)</option>
+                                <option value="बैचलर ऑफ साइंस (बी.एस्स.)">बैचलर ऑफ साइंस (बी.एस्स.)</option>
+                                <option value="बैचलर ऑफ कॉमर्स (बी.कॉम.)">बैचलर ऑफ कॉमर्स (बी.कॉम.)</option>
+                                <option value="बैचलर ऑफ इंजीनियरिंग (बी.ई.)">बैचलर ऑफ इंजीनियरिंग (बी.ई.)</option>
+                                <option value="बैचलर ऑफ टेक्नोलॉजी (बी.टेक.)">बैचलर ऑफ टेक्नोलॉजी (बी.टेक.)</option>
+                                <option value="बैचलर ऑफ मेडिसिन, बैचलर ऑफ सर्जरी (एमबीबीएस)">बैचलर ऑफ मेडिसिन, बैचलर ऑफ सर्जरी (एमबीबीएस)</option>
+                                <option value="बैचलर ऑफ डेंटल सर्जरी (बी.डी.एस.)">बैचलर ऑफ डेंटल सर्जरी (बी.डी.एस.)</option>
+                                <option value="बैचलर ऑफ फार्मेसी (बी.फार्म.)">बैचलर ऑफ फार्मेसी (बी.फार्म.)</option>
+                                <option value="बैचलर ऑफ आर्किटेक्चर (बी.आर्क.)">बैचलर ऑफ आर्किटेक्चर (बी.आर्क.)</option>
+                                <option value="बैचलर ऑफ बिजनेस एडमिनिस्ट्रेशन (बीबीए)">बैचलर ऑफ बिजनेस एडमिनिस्ट्रेशन (बीबीए)</option>
+                                <option value="बैचलर ऑफ कंप्यूटर एप्लीकेशन्स (बी.सी.ए)">बैचलर ऑफ कंप्यूटर एप्लीकेशन्स (बी.सी.ए)</option>
+                                <option value="बैचलर ऑफ लॉ (बीएलबी)">बैचलर ऑफ लॉ (बीएलबी)</option>
+                                <option value="बैचलर ऑफ एजुकेशन (बी.एड.)">बैचलर ऑफ एजुकेशन (बी.एड.)</option>
+                                <option value="बैचलर ऑफ फाइन आर्ट्स (बीएफए)">बैचलर ऑफ फाइन आर्ट्स (बीएफए)</option>
+                                <option value="बैचलर ऑफ सोशल वर्क (बी.एस.डब्ल्यू)">बैचलर ऑफ सोशल वर्क (बी.एस.डब्ल्यू)</option>
+                                <option value="बैचलर ऑफ होटल मैनेजमेंट (बीएचएम)">बैचलर ऑफ होटल मैनेजमेंट (बीएचएम)</option>
+                                <option value="बैचलर ऑफ फिजियोथेरेपी (बीपीटी)">बैचलर ऑफ फिजियोथेरेपी (बीपीटी)</option>
+                                <option value="बैचलर ऑफ वेटरनरी साइंस (बीवीएस)">बैचलर ऑफ वेटरनरी साइंस (बीवीएस)</option>
+                                <option value="बैचलर ऑफ डिजाइन (बी.डिजन)">बैचलर ऑफ डिजाइन (बी.डिजन)</option>
+                                <option value="मास्टर ऑफ आर्ट्स (एमए)">मास्टर ऑफ आर्ट्स (एमए)</option>
+                                <option value="मास्टर ऑफ साइंस (एमएससी)">मास्टर ऑफ साइंस (एमएससी)</option>
+                                <option value="मास्टर ऑफ कॉमर्स (एमकॉम)">मास्टर ऑफ कॉमर्स (एमकॉम)</option>
+                                <option value="मास्टर ऑफ इंजीनियरिंग (एमई)">मास्टर ऑफ इंजीनियरिंग (एमई)</option>
+                                <option value="मास्टर ऑफ टेक्नोलॉजी (एमटेक)">मास्टर ऑफ टेक्नोलॉजी (एमटेक)</option>
+                                <option value="मास्टर ऑफ बिजनेस एडमिनिस्ट्रेशन (एमबीए)">मास्टर ऑफ बिजनेस एडमिनिस्ट्रेशन (एमबीए)</option>
+                                <option value="मास्टर ऑफ कंप्यूटर एप्लीकेशन्स (एमसीए)">मास्टर ऑफ कंप्यूटर एप्लीकेशन्स (एमसीए)</option>
+                                <option value="मास्टर ऑफ लॉ (एलएलएम)">मास्टर ऑफ लॉ (एलएलएम)</option>
+                                <option value="मास्टर ऑफ एजुकेशन (एमएड)">मास्टर ऑफ एजुकेशन (एमएड)</option>
+                                <option value="मास्टर ऑफ फाइन आर्ट्स (एमएफए)">मास्टर ऑफ फाइन आर्ट्स (एमएफए)</option>
+                                <option value="मास्टर ऑफ सोशल वर्क (एमएसडब्ल्यू)">मास्टर ऑफ सोशल वर्क (एमएसडब्ल्यू)</option>
+                                <option value="मास्टर ऑफ हॉस्पिटल एडमिनिस्ट्रेशन (एमएचए)">मास्टर ऑफ हॉस्पिटल एडमिनिस्ट्रेशन (एमएचए)</option>
+                                <option value="मास्टर ऑफ पब्लिक हेल्थ (एमपीएच)">मास्टर ऑफ पब्लिक हेल्थ (एमपीएच)</option>
+                                <option value="मास्टर ऑफ फार्मेसी (एमफार्म)">मास्टर ऑफ फार्मेसी (एमफार्म)</option>
+                                <option value="मास्टर ऑफ डिजाइन (एमडिजन)">मास्टर ऑफ डिजाइन (एमडिजन)</option>
+                                <option value="मास्टर ऑफ वेटरनरी साइंस (एमवीएस)">मास्टर ऑफ वेटरनरी साइंस (एमवीएस)</option>
+                                <option value="मास्टर ऑफ फिजियोथेरेपी (एमपीटी)">मास्टर ऑफ फिजियोथेरेपी (एमपीटी)</option>
+                                <option value="डॉक्टर ऑफ फिलॉसफी">डॉक्टर ऑफ फिलॉसफी</option>
+                                <option value="डॉक्टर ऑफ मेडिसिन">डॉक्टर ऑफ मेडिसिन</option>
+                                <option value="डॉक्टर ऑफ डेंटल सर्जरी">डॉक्टर ऑफ डेंटल सर्जरी</option>
+                                <option value="डॉक्टर ऑफ वेटरनरी मेडिसिन">डॉक्टरेट ऑफ वेटरनरी मेडिसिन (पशु चिकित्सा में)</option>
+                                <option value="इंजीनियरिंग में डिप्लोमा">इंजीनियरिंग में डिप्लोमा</option>
+                                <option value="फार्मेसी में डिप्लोमा">फार्मेसी में डिप्लोमा</option>
+                                <option value="शिक्षा में डिप्लोमा">शिक्षा में डिप्लोमा</option>
+                                <option value="पोस्टग्रेजुएट डिप्लोमा इन मैनेजमेंट">पोस्टग्रेजुएट डिप्लोमा इन मैनेजमेंट</option>
+                                <option value="डिजिटल मार्केटिंग में सर्टिफिकेट">डिजिटल मार्केटिंग में सर्टिफिकेट</option>
+                                <option value="डेटा साइंस में सर्टिफिकेट">डेटा साइंस में सर्टिफिकेट</option>
+                                <option value="ग्राफिक डिजाइन में सर्टिफिकेट">ग्राफिक डिजाइन में सर्टिफिकेट</option>
+                                <option value="अन्य">अन्य</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4 other-qualification-group" style="display: none;"> 
                         <div class="form-group">
-                            <label for="childother${childCount}-qualification">Other Qualification</label>
-                            <input type="text" class="form-control other-qualification" id="childother${childCount}-qualification" placeholder="Enter your qualification">
+                            <label for="childother${childCount}-qualification">अन्य शिक्षा</label>
+                            <input type="text" class="form-control other-qualification" id="childother${childCount}-qualification" placeholder="शिक्षा का चयन करें">
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                         <div class="form-group">
-                            <label for="child${childCount}-marriage-stage">Marriage Stage</label>
+                            <label for="child${childCount}-marriage-stage">विवाह चरण</label>
                             <select class="form-control" id="child${childCount}-marriage-stage">
-                                <option selected disabled value>Select Marriage Stage</option>
-                                <option>Unmarried</option>
-                                <option>Tika</option>
-                                <option>Engaged</option>
+                                <option selected disabled value>विवाह चरण चुने</option>
+                                <option>अविवाहित</option>
+                                <option>टीका</option>
+                                <option>सागाई</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                         <div class="form-group">
-                            <label for="child${childCount}-blood-group">Blood Group</label>
+                            <label for="child${childCount}-blood-group">ब्लड ग्रुप</label>
                             <select class="form-control" id="child${childCount}-blood-group">
-                                <option selected disabled value>Select Blood Group</option>
-                                <option>A+</option>
-                                <option>A-</option>
-                                <option>B+</option>
-                                <option>B-</option>
-                                <option>AB+</option>
-                                <option>AB-</option>
-                                <option>O+</option>
-                                <option>O-</option>
+                                <option selected disabled value>ब्लड ग्रुप चुने</option>
+                                <option>ए+</option>
+                                <option>ए-</option>
+                                <option>बी+</option>
+                                <option>बी+</option>
+                                <option>एबी+</option>
+                                <option>एबी-</option>
+                                <option>ओ+</option>
+                                <option>ओ-</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                         <div class="form-group">
-                            <label for="child${childCount}-occupation">Occupation</label>
+                            <label for="child${childCount}-occupation">कार्य</label>
                             <select class="form-control" id="child${childCount}-occupation">
-                                <option selected disabled value>Select Occupation</option>
-                                <option>Business</option>
-                                <option>Government job</option>
-                                <option>Pension</option>
-                                <option>Farming</option>
-                                <option>Private Job</option>
-                                <option>Ferry</option>
-                                <option>Labour</option>
-                                <option>Student</option>
+                                <option selected disabled value>चुने कार्य</option>
+                                <option value="कृषि">कृषि</option>
+                                <option value="व्यवसाय">व्यवसाय</option>
+                                <option value="फेरी">फेरी</option>
+                                <option value="श्रमिक">श्रमिक</option>
+                                <option value="पेंशन">पेंशन</option>
+                                <option value="शासकीया नौकरी">शासकीया नौकरी</option>
+                                <option value="प्राइवेट नौकरी">प्राइवेट नौकरी</option>
+                                <option value="विद्यार्थी">विद्यार्थी</option>
+                                <option value="अन्य">अन्य</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4 other-occupation-group" style="display: none;"> 
                         <div class="form-group">
-                            <label for="childother${childCount}-occupation">Other Occupation</label>
-                            <input type="text" class="form-control other-occupation" id="childother${childCount}-occupation" placeholder="Enter your occupation">
+                            <label for="childother${childCount}-occupation">अन्य कार्य</label>
+                            <input type="text" class="form-control other-occupation" id="childother${childCount}-occupation" placeholder="अपनी कार्य दर्ज करें">
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                        <label for="">Cast Certificate</label>
+                        <label for="">जाति प्रमाण पत्र</label>
                         <div class="input-group role-group mt-1">
                             <div class="form-check">
-                                <input type="radio" id="Yes" name="role${childCount}" value="yes" class="form-check-input">
-                                <label for="Yes" class="form-check-label">Yes</label>
+                                <input type="radio" id="Yes" name="role${childCount}" value="हाँ" class="form-check-input">
+                                <label for="Yes" class="form-check-label">हाँ</label>
                             </div>
                             <div class="form-check">
-                                <input type="radio" id="No" name="role${childCount}" value="no" class="form-check-input">
-                                <label for="No" class="form-check-label">No</label>
+                                <input type="radio" id="No" name="role${childCount}" value="नहीं" class="form-check-input">
+                                <label for="No" class="form-check-label">नहीं</label>
                             </div>
                         </div>
                     </div>
@@ -1192,7 +1234,7 @@
                         <div class="upload__box">
                             <div class="upload__btn-box">
                                 <label>
-                                    <p class="upload__btn bg-info w-25 ">Upload images</p>
+                                    <p class="upload__btn bg-info w-25 ">तश्वीरें अपलोड करो</p>
                                     <input type="file" multiple="" data-max_length="3" class="uploadProfileInput upload__inputfile " id="child${childCount}-file" name="_file">
                                 </label>
                             </div>
@@ -1210,34 +1252,21 @@
             const qualificationSelect = newChildEntry.querySelector(`#child${childCount}-qualification`);
             qualificationSelect.addEventListener('change', function() {
                 const otherQualificationGroup = newChildEntry.querySelector('.other-qualification-group');
-                if (qualificationSelect.value === 'Other') {
+                if (qualificationSelect.value === 'अन्य') {
                     otherQualificationGroup.style.display = 'block';
                 } else {
                     otherQualificationGroup.style.display = 'none';
                 }
             });
-            const occupationSelect = newChildEntry.querySelector(`#child${childCount}-occupation`);
-            const otherOccupationGroup = newChildEntry.querySelector('.other-occupation-group');
+            // const occupationSelect = newChildEntry.querySelector(`#child${childCount}-occupation`);
+            // const otherOccupationGroup = newChildEntry.querySelector('.other-occupation-group');
 
-            occupationSelect.addEventListener('change', function() {
-            otherOccupationGroup.style.display = 'block';
-            });
+            // occupationSelect.addEventListener('change', function() {
+            // otherOccupationGroup.style.display = 'block';
+            // });
 
         }
-    //     function removeChild() {
-    //     if (childCount > 0) {
-    //         const childrenEntries = document.getElementById('children-entries');
-    //         const lastChild = document.getElementById(`child-${childCount}`);
-    //         if (lastChild) {
-    //             childrenEntries.removeChild(lastChild);
-    //             childCount--;
-    //         } else {
-    //             console.error("No child found to remove.");
-    //         }
-    //     } else {
-    //         console.error("No children to remove.");
-    //     }
-    // }
+
 
 </script>
 <script>
@@ -1260,18 +1289,24 @@
     newEntry.className = 'Married_child-entry mb-3';
     newEntry.id = 'married_child-' + newEntryIndex;
     newEntry.innerHTML = `
-        <h5>Married Child ${newEntryIndex}</h5>
+        <h5>क्रमांक ${newEntryIndex}</h5>
         <div class="row">
             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
              <div class="form-group">
-                    <label for="married_child${newEntryIndex}-name">Name</label>
+                    <label for="married_child${newEntryIndex}-name">नाम</label>
                     <input type="text" class="form-control" id="married_child${newEntryIndex}-name">
                 </div>
                 
             </div>
+             <div class="col-12 col-lg-4 col-md-4 col-sm-4" >
+                <div class="form-group">
+                    <label for="married_child${newEntryIndex}-address">निवासी</label>
+                    <input type="text" class="form-control" id="married_child${newEntryIndex}-address">
+                </div>
+            </div>
             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
             <div class="form-group">
-                    <label for="married-child-number-id-${newEntryIndex}">ID Number</label>
+                    <label for="married-child-number-id-${newEntryIndex}">आईडी नंबर</label>
                     <input type="text" class="form-control" id="married-child-number-id-${newEntryIndex}" >
                 </div>
                 <div class="form-group" hidden>
@@ -1279,9 +1314,7 @@
                     <input type="text" class="form-control" id="married-child-family-id-${newEntryIndex}"  value="${firstChildFamilyId}">
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-               
-            </div>
+           
             <div class="col-12 col-lg-4 col-md-4 col-sm-4" hidden>
                         <div class="form-group">
                             <label for="marriedchild-family-member-id-${newEntryIndex}">Family Member ID</label>
@@ -1298,7 +1331,7 @@
                 <div class="upload__box">
                     <div class="upload__btn-box">
                         <label>
-                            <p class="upload__btn bg-info w-25">Upload images</p>
+                            <p class="upload__btn bg-info w-25">तश्वीरें अपलोड करो</p>
                             <input type="file" multiple="" data-max_length="3" class="upload__inputfile" id="child-married-file-${newEntryIndex}" name="_file">
                         </label>
                     </div>
@@ -1312,12 +1345,46 @@
     entries.appendChild(newEntry);
     ImgUpload(); // Reinitialize the image upload function
 }
-
-
-
-
 </script>
+<script>
+    function getInitialFamily() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const user_id = urlParams.get('family_id');
+    const url = "http://192.168.1.10:8000/api/get_initial_family_details_byId/" + user_id;
+    const token = localStorage.getItem('token');
 
+    $.ajax({
+        url: url,
+        type: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+        success: function(data) {
+            if (data.data && data.data.length > 0) {
+                firstChildIdNumber = data.data[0].id;
+                firstChildFamilyId = data.data[0].fk_family_id;
+
+                // Populate initial fields
+                document.getElementById('numner_id').value = firstChildIdNumber;
+                document.getElementById('family_id').value = firstChildFamilyId;
+                document.getElementById('female_numner_id').value = firstChildIdNumber;
+                document.getElementById('female_family_id').value = firstChildFamilyId;
+                document.getElementById('child-numner-id').value = firstChildIdNumber;
+                document.getElementById('child-family-id').value = firstChildFamilyId
+                document.getElementById('married-child-numner-id').value = firstChildIdNumber;
+                document.getElementById('married-child-family-id').value = firstChildFamilyId
+
+                // addChild();
+           
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching data:', error);
+        }
+    });
+}
+getInitialFamily();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 

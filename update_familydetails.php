@@ -8,19 +8,25 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://localhost:8080\census_project\cssfile\familydetail_Admin.css">
+  <link rel="stylesheet" href="http://localhost:8080\census_project\cssfile\adminpanel.css">
   <link rel="stylesheet" href="http://localhost:8080\census_project\cssfile\familydetails.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="http://localhost:8080/census_project\jsfile\add_familyDetails.js"></script> 
-    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
-
-  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="http://localhost:8080/census_project\jsfile\add_familyDetails.js"></script> 
 </head>
 <style>
-      .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon {
-      display: none !important;
-    }
-        .role-group .form-check {
+   .dataTables_wrapper .dataTables_paginate {
+    float: left;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.dataTables_wrapper .dataTables_length {
+    float: right;
+    text-align: right;
+    margin-top: 10px;
+}
+.role-group .form-check {
       display: inline-block;
       margin-right: 15px;
   }
@@ -30,79 +36,80 @@
       height: 16px;
       margin-right: 5px;
   }
-
+.goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon {
+      display: none !important;
+    }
 </style>
+
 <body>
 <div class="main" id="main">
-    <div class="sidebar text-center">
-        <div class="aside-tools py-3">
-            <!-- <img src="http://localhost:8080\census_project\assets\images\Census_Logo.png" alt="" class=" image"> -->
-            <div class="logo notranslate">
-                <h6 class=" text-white small-text">"छीपा समाज शिक्षा और कैरियर" ग्रुप</h6>
-                <h6 class=" text-white small-text">छीपा (क्षत्रिय) समाज की जनगणना, वर्ष - 2024</h6>
-                <h6 class=" text-white small-text">(परिवार परिचय - पत्र)</h6>
+<div class="sidebar text-center">
+            <div class="aside-tools py-3">
+                <!-- <img src="http://localhost:8080\census_project\assets\images\Census_Logo.png" alt="" class=" image"> -->
+                <div class="logo">
+                    <h6 class=" text-white small-text">"छीपा समाज शिक्षा और कैरियर" ग्रुप</h6>
+                    <h6 class=" text-white small-text">छीपा (क्षत्रिय) समाज की जनगणना, वर्ष - 2024</h6>
+                    <h6 class=" text-white small-text">(परिवार परिचय - पत्र)</h6>
+                </div>
+            </div>
+            <!-- <div class="aside-tools py-2">
+                <div id="google_translate_element" class="mt-1"></div>
+            </div> -->
+            <div class="menu py-2">
+                <ul class="side-nav">
+                    <li class="side-nav__item side-nav__item-active ">
+                       <a href="adminpanel.php">
+                       <i class="fas fa-user text-white"></i>  <span class="agt text-white text-decoration-none">जनगणना अधिकारी</span>
+                       </a>
+                    </li>
+                    <li class="side-nav__item side-nav__item-active  text-center">
+                       <a href="initial_family.php" class="agent text-decoration-none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10"/>
+                        </svg>
+                         <span class="agt text-white">जनगणना डेटा</span>
+                       </a>
+                    </li>
+                    <li class="side-nav__item side-nav__item-active  text-center">
+                       <a href="update_familydetails.php" class="agent text-decoration-none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10"/>
+                        </svg>
+                         <span class="agt text-white">पारिवारिक विवरण</span>
+                       </a>
+                    </li>
+                    <li class="side-nav__item side-nav__item-active  text-center notranslate">
+                       <a href="feadback.php" class="agent text-decoration-none"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10"/>
+                        </svg>
+                       <span class="agt text-white">प्रतिक्रिया</span>
+                    </a>
+                      
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="menu py-2">
-        
-            <ul class="side-nav">
-                <li class="side-nav__item side-nav__item-active ">
-                   <a href="adminpanel.php">
-                   <i class="fas fa-user text-white"></i>  <span class="agt text-white text-decoration-none">Agent Management</span>
-                   </a>
-                </li>
-                <li class="side-nav__item side-nav__item-active  text-center">
-                   <a href="initial_family.php" class="agent text-decoration-none">
-                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10"/>
-                    </svg>
-                     <span class="agt text-white">Census Data</span>
-                   </a>
-                </li>
-                <li class="side-nav__item side-nav__item-active  text-center">
-                   <a href="familydetail_admin.php" class="agent text-decoration-none">
-                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10"/>
-                    </svg>
-                     <span class="agt text-white">Family Details</span>
-                   </a>
-                </li>
-                <li class="side-nav__item side-nav__item-active  text-center">
-                   <a href="feadback.php" class="agent text-decoration-none">
-                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10"/>
-                    </svg>
-                   <span class="agt text-white">Feadback</span>
-                </a>
-                  
-                </li>
-            </ul>
-        </div>
-    </div>
     <div class="content">
-    <header>
-        <i class="fas fa-bars" id="menu"></i>
-            <div class="admin-header">
-                <img src="http://localhost:8080/census_project/assets/images/admin-logo.jpg" alt="Admin Logo" class="adminlogo">
-                <span class="text-white is-user-name">Admin Name</span>
-                <div class="dropdown">
-                    <i class="fas fa-caret-down"></i>
-                    <div class="dropdown-content">
-                        <a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <header>
+                <i class="fas fa-bars" id="menu"></i>
+                <div class="admin-header">
+                    <img src="http://localhost:8080/census_project/assets/images/admin-logo.jpg" alt="Admin Logo" class="adminlogo">
+                    <span class="text-white is-user-name">व्यवस्थापक का नाम</span>
+                    <div class="dropdown">
+                        <i class="fas fa-caret-down" id="dropdown-btn"></i>
+                        <div class="dropdown-content" id="dropdown-content">
+                            <a href="#logout"><i class="fas fa-sign-out-alt"></i> लॉग आउट</a>
+                            <!-- <div id="google_translate_element" class="mt-1 text-center"></div> -->
+                        </div>
                     </div>
                 </div>
-                <div id="google_translate_element" class="mt-1"></div>
-            </div>
-       
-    </header>
-  
+            </header>
+
     <div class="container">
         <!-- Husband Section -->
         <div class="member-section">
             <div class="filter-card shadow mt-5">
                 <div class="card bg-light">
                     <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
                             <h4 class="hading">पुरुष मुखिया</h4>
                             <span class="toggle-icon" id="toggle-husband" onclick="toggleSection('husband-section', 'toggle-husband')">+</span>
                         </div>
@@ -266,8 +273,8 @@
                                             <label for="husband-marriage">विवाह</label>
                                             <select class="form-control" id="husband_marriage" onchange="toggleHusMarriageType()">
                                                 <option selected disabled value>विवाह चुने</option>
-                                                <option value="हाँ">हाँ</option>
-                                                <option value="नहीं">नहीं</option>
+                                                <option value="1">हाँ</option>
+                                                <option value="0">नहीं</option>
                                             </select>
                                         </div>
                                     </div>
@@ -285,7 +292,7 @@
                                         <div class="form-group">
                                             <label for="husband-marital-status">वैवाहिक स्थिति</label>
                                             <select class="form-control" id="husband_marital_status">
-                                            <option selected disabled value>वैवाहिक स्थिति चुने</option>
+                                                <option selected disabled value>वैवाहिक स्थिति चुने</option>
                                                 <option>सामान्य</option>
                                                 <option>विदुर</option>
                                                 <option>तलाकशुदा</option>
@@ -302,7 +309,7 @@
                                                 <option>ए+</option>
                                                 <option>ए-</option>
                                                 <option>बी+</option>
-                                                <option>बी+</option>
+                                                <option>बी-</option>
                                                 <option>एबी+</option>
                                                 <option>एबी-</option>
                                                 <option>ओ+</option>
@@ -356,11 +363,11 @@
                                         <label for="">जाति प्रमाण पत्र</label>
                                         <div class="input-group role-group mt-1">
                                             <div class="form-check">
-                                                <input type="radio" id="Yes" name="role" value="हाँ" class="form-check-input">
+                                                <input type="radio" id="Yes" name="role" value="1" class="form-check-input">
                                                 <label for="Yes" class="form-check-label">हाँ</label>
                                             </div>
                                             <div class="form-check">
-                                                <input type="radio" id="No" name="role" value="नहीं" class="form-check-input">
+                                                <input type="radio" id="No" name="role" value="0" class="form-check-input">
                                                 <label for="No" class="form-check-label">नहीं</label>
                                             </div>
                                         </div>
@@ -553,8 +560,8 @@
                                             <label for="wife-marriage">विवाह</label>
                                             <select class="form-control" id="wife_marriage" onchange="toggleMarriageType()">
                                                 <option selected disabled value>विवाह चुने</option>
-                                                <option value="हाँ">हाँ</option>
-                                                <option value="नहीं">नहीं</option>
+                                                <option value="1">हाँ</option>
+                                                <option value="0">नहीं</option>
                                             </select>
                                         </div>
                                     </div>
@@ -589,7 +596,7 @@
                                                 <option>ए+</option>
                                                 <option>ए-</option>
                                                 <option>बी+</option>
-                                                <option>बी+</option>
+                                                <option>बी-</option>
                                                 <option>एबी+</option>
                                                 <option>एबी-</option>
                                                 <option>ओ+</option>
@@ -644,11 +651,11 @@
                                         </label>
                                         <div class="input-group role-group mt-1">
                                             <div class="form-check">
-                                                <input type="radio" id="Yes" name="role" value="हाँ" class="form-check-input">
+                                                <input type="radio" id="Yes" name="role" value="1" class="form-check-input">
                                                 <label for="Yes" class="form-check-label">हाँ</label>
                                             </div>
                                             <div class="form-check">
-                                                <input type="radio" id="No" name="role" value="नहीं" class="form-check-input">
+                                                <input type="radio" id="No" name="role" value="0" class="form-check-input">
                                                 <label for="No" class="form-check-label">नहीं</label>
                                             </div>
                                         </div>
@@ -677,7 +684,7 @@
                     <!-- Children Section -->
                     <div class="member-section bg-light">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4 class="hading">Unmarried Children</h4>
+                            <h4 class="hading">अविवाहित बच्चे</h4>
                             <span class="toggle-icon" id="toggle-children" onclick="toggleSection('children-section', 'toggle-children')">+</span>
                         </div>
                         <div id="children-section" style="display: none;">
@@ -685,7 +692,7 @@
                                 <div id="children-entries">
                                     <!-- Child entries will be dynamically added here -->
                                 </div>
-                                <button type="button" class="btn btn-info" onclick="addChild()">Add Child</button>
+                                <button type="button" class="btn btn-info" onclick="addChild()">जोडे</button>
                               
                             </form>
                         </div>
@@ -693,7 +700,7 @@
                     </div>
                     <div class="member-section mt-3 bg-light">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4 class="hading">Married Children</h4>
+                            <h4 class="hading">विवाहित बच्चे</h4>
                             <span class="toggle-icon" id="married_toggle-children" onclick="toggleSection('married_children-section', 'married_toggle-children')">+</span>
                         </div>
                         <div id="married_children-section" style="display: none;">
@@ -701,7 +708,7 @@
                                 <div id="married_children-entries">
                                  
                                 </div>
-                                <button type="button" class="btn btn-info" onclick="addMarriedChild()">Add Married Child</button>
+                                <button type="button" class="btn btn-info" onclick="addMarriedChild()">जोडे</button>
                                 <div class="mt-2 text-end">
                                     <!-- <button type="button" class="btn btn-success" onclick="store3(event)">Update</button> -->
                                 </div>
@@ -712,8 +719,11 @@
             </div>
         </div>        
     </div>
-    
+    </div>
+</div>
+
 </body>
+</html>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </html>
@@ -775,6 +785,26 @@ Bar.addEventListener("click", () => {
             toggleIcon.textContent = "+";
         }
     }
+    function toggleMarriageType() {
+    var marriageSelect = document.getElementById("wife_marriage");
+    var marriageTypeWrapper = document.getElementById("marriage_type_wrapper");
+
+    if (marriageSelect.value === "1") {
+        marriageTypeWrapper.style.display = "block";
+    } else {
+        marriageTypeWrapper.style.display = "none";
+    }
+}
+function toggleHusMarriageType() {
+    var marriageSelect = document.getElementById("husband_marriage");
+    var marriageTypeWrapper = document.getElementById("husband_marriage_type_wrapper");
+
+    if (marriageSelect.value === "1") {
+        marriageTypeWrapper.style.display = "block";
+    } else {
+        marriageTypeWrapper.style.display = "none";
+    }
+}
 </script>
 <script>
 let childCount = 1;
@@ -915,7 +945,7 @@ function addChild() {
                         <option>ए+</option>
                         <option>ए-</option>
                         <option>बी+</option>
-                        <option>बी+</option>
+                        <option>बी-</option>
                         <option>एबी+</option>
                         <option>एबी-</option>
                         <option>ओ+</option>
@@ -950,11 +980,11 @@ function addChild() {
                 <label for="">जाति प्रमाण पत्र</label>
                 <div class="input-group role-group mt-1">
                     <div class="form-check">
-                        <input type="radio" id="Yes" name="role${childCount}" value="हाँ" class="form-check-input">
+                        <input type="radio" id="Yes" name="role${childCount}" value="1" class="form-check-input">
                         <label for="Yes" class="form-check-label">हाँ</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" id="No" name="role${childCount}" value="नहीं" class="form-check-input">
+                        <input type="radio" id="No" name="role${childCount}" value="0" class="form-check-input">
                         <label for="No" class="form-check-label">नहीं</label>
                     </div>
                 </div>
@@ -992,15 +1022,15 @@ function addChild() {
     });
 
     // Event listener for occupation select
-    // const occupationSelect = newChildEntry.querySelector(`#child${childCount}-occupation`);
-    // const otherOccupationGroup = newChildEntry.querySelector('.other-occupation-group');
-    // occupationSelect.addEventListener('change', function() {
-    //     if (occupationSelect.value === 'Other') {
-    //         otherOccupationGroup.style.display = 'block';
-    //     } else {
-    //         otherOccupationGroup.style.display = 'none';
-    //     }
-    // });
+    const occupationSelect = newChildEntry.querySelector(`#child${childCount}-occupation`);
+    const otherOccupationGroup = newChildEntry.querySelector('.other-occupation-group');
+    occupationSelect.addEventListener('change', function() {
+        if (occupationSelect.value === 'अन्य') {
+            otherOccupationGroup.style.display = 'block';
+        } else {
+            otherOccupationGroup.style.display = 'none';
+        }
+    });
 }
 </script>
 <script>
@@ -1023,15 +1053,16 @@ function addChild() {
     newEntry.className = 'Married_child-entry mb-3';
     newEntry.id = 'married_child-' + newEntryIndex;
     newEntry.innerHTML = `
-        <h5>${newEntryIndex}</h5>
+        <h5>Married Child ${newEntryIndex}</h5>
         <div class="row">
             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                <div class="form-group">
+             <div class="form-group">
                     <label for="married_child${newEntryIndex}-name">नाम</label>
                     <input type="text" class="form-control" id="married_child${newEntryIndex}-name">
                 </div>
+                
             </div>
-            <div class="col-12 col-lg-4 col-md-4 col-sm-4">
+              <div class="col-12 col-lg-4 col-md-4 col-sm-4" >
                 <div class="form-group">
                     <label for="married_child${newEntryIndex}-address">निवासी</label>
                     <input type="text" class="form-control" id="married_child${newEntryIndex}-address">
@@ -1165,6 +1196,7 @@ function getFamilyDetail() {
                         $('#husband_name').val(member.name);
                         $('#husband_mother_name').val(member.mother_name);
                         $('#husband_father_name').val(member.father_name);
+                        $('#husband_wife_name').val(member.wife_name);
                         $('#husband_father_surname').val(member.father_surname);
                         $('#husband_father_id').val(member.father_id);
                         $('#husband_age').val(member.age);
@@ -1172,9 +1204,9 @@ function getFamilyDetail() {
                         $('#husband_mobile').val(member.mobile_number);
                         $('#husband_relation').val(member.relation);
                         $('#husband_qualification').val(member.qualification);
-                        $('#husband_marriage').val(member.marrieged);
                         $('#husband_marriage_type').val(member.marriage_type);
                         $('#husband_marital_status').val(member.marital_status);
+                        $('#husband_marriage').val(member.marrieged);
                         $('#husband_blood_group').val(member.blood_group);
                         $('#husband_total_kids').val(member.total_kids);
                         $('#husband_sons').val(member.sons);
@@ -1183,14 +1215,14 @@ function getFamilyDetail() {
                         $('#husband_occupation_type').val(member.occupation_type);
                         $('.other-occupation-group').show();
                         
-                        if (member.cast_certificate === 'Yes') {
+                        if (member.cast_certificate === '1') {
                             $('#Yes').prop('checked', true);
                             $('#No').prop('checked', false);
                         } else {
                             $('#Yes').prop('checked', false);
                             $('#No').prop('checked', true);
                         }
-                        if (member.qualification === 'Other') {
+                        if (member.qualification === 'अन्य') {
                             $('.other-qualification-group').show();
                             $('#husband_other_qualification').val(member.other_qualification);
                         } else {
@@ -1216,6 +1248,7 @@ function getFamilyDetail() {
                         $('#wife_name').val(member.name);
                         $('#wife_mother_name').val(member.mother_name);
                         $('#wife_father_name').val(member.father_name);
+                        $('#wife_husband_name').val(member.husband_name);
                         $('#wife_father_surname').val(member.father_surname);
                         $('#wife_father_id').val(member.father_id);
                         $('#wife_age').val(member.age);
@@ -1223,7 +1256,6 @@ function getFamilyDetail() {
                         $('#wife_mobile').val(member.mobile_number);
                         $('#wife_relation').val(member.relation);
                         $('#wife_qualification').val(member.qualification);
-                        $('#wife_marriage').val(member.marrieged);
                         $('#wife_marriage_type').val(member.marriage_type);
                         $('#wife_marital_status').val(member.marital_status);
                         $('#wife_blood_group').val(member.blood_group);
@@ -1233,14 +1265,14 @@ function getFamilyDetail() {
                         $('#wife_occupation').val(member.occupation);
                         $('#wife_occupation_type').val(member.occupation_type);
                         $('.other-occupation-group').show();
-                        if (member.cast_certificate === 'Yes') {
-                            $('#Yes_wife').prop('checked', true);
-                            $('#No_wife').prop('checked', false);
+                        if (member.cast_certificate === '1') {
+                            $('#Yes').prop('checked', true);
+                            $('#No').prop('checked', false);
                         } else {
-                            $('#Yes_wife').prop('checked', false);
-                            $('#No_wife').prop('checked', true);
+                            $('#Yes').prop('checked', false);
+                            $('#No').prop('checked', true);
                         }
-                        if (member.qualification === 'Other') {
+                        if (member.qualification === 'अन्य') {
                             $('.other-qualification-group').show();
                             $('#wife_other_qualification').val(member.other_qualification);
                         } else {
@@ -1485,11 +1517,11 @@ function addNewChild(member) {
                 <label for="">जाति प्रमाण पत्</label>
                 <div class="input-group role-group mt-1">
                     <div class="form-check">
-                        <input type="radio" id="Yes${member.id}" name="role${member.id}" value="हाँ" class="form-check-input" ${member.cast_certificate === 'Yes' ? 'checked' : ''}>
+                        <input type="radio" id="Yes${member.id}" name="role${member.id}" value="1" class="form-check-input" ${member.cast_certificate === 'Yes' ? 'checked' : ''}>
                         <label for="Yes${member.id}" class="form-check-label">हाँ</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" id="No${member.id}" name="role${member.id}" value="नहीं" class="form-check-input" ${member.cast_certificate === 'No' ? 'checked' : ''}>
+                        <input type="radio" id="No${member.id}" name="role${member.id}" value="0" class="form-check-input" ${member.cast_certificate === 'No' ? 'checked' : ''}>
                         <label for="No${member.id}" class="form-check-label">नहीं</label>
                     </div>
                 </div>
@@ -1536,8 +1568,6 @@ function addNewChild(member) {
                            
 }
 
-
-
 function populateInitialMarriedChild(marriedChild) {
     $('#married_child1-name').val(marriedChild.name);
     // $('#married-child-number-id').val(marriedChild.id_number);
@@ -1550,49 +1580,57 @@ function addNewMarriedChild(marriedChild) {
     marriedChildEntry.className = 'married-child-entry mb-3';
     marriedChildEntry.id = `married_child-${marriedChild.id}`; // Assuming marriedChild.id can uniquely identify each married child
 
+    const id = marriedChild.id || '';
+    const familyId = marriedChild.family_id || '';
+    const familyMemberId = marriedChild.family_member_id || '';
+    const name = marriedChild.name || '';
+    const address = marriedChild.married_child_address || '';
+    const marriedChildId = marriedChild.married_child_id || '';
+    const selfImage = marriedChild.self_image ? marriedChild.self_image.trim() : '';
+
     marriedChildEntry.innerHTML = `
-        <h5>${marriedChild.name}</h5>
+        <h5>Married Child ${name}</h5>
         <div class="row">
-           <div class="col-12 col-lg-4 col-md-4 col-sm-4" hidden>
+            <div class="col-12 col-lg-4 col-md-4 col-sm-4" hidden>
                 <div class="form-group">
-                    <label for="child$${marriedChild.id}-family-id">Married Child ID</label>
-                    <input type="text" class="form-control" id="child$${marriedChild.id}-family-id" value="${marriedChild.id}">
+                    <label for="child${id}-family-id">Married Child ID</label>
+                    <input type="text" class="form-control" id="child${id}-family-id" value="${id}">
                 </div>
             </div>
             <div class="col-12 col-lg-4 col-md-4 col-sm-4" hidden>
                 <div class="form-group">
-                    <label for="child$${marriedChild.id}-family-id">Family ID</label>
-                    <input type="text" class="form-control" id="child$${marriedChild.id}-family-id" value="${marriedChild.family_id}">
+                    <label for="child${id}-family-id">Family ID</label>
+                    <input type="text" class="form-control" id="married_child${id}-family-id" value="${familyId}">
                 </div>
             </div>
             <div class="col-12 col-lg-4 col-md-4 col-sm-4" hidden>
                 <div class="form-group">
-                    <label for="child$${marriedChild.id}-family-member-id">Family Member ID</label>
-                    <select class="form-control" id="child$${marriedChild.id}-family-member-id">
+                    <label for="child${id}-family-member-id">Family Member ID</label>
+                    <select class="form-control" id="child${id}-family-member-id">
                         <option selected disabled value>Select Marital Status</option>
-                       <option value="1"  ${marriedChild.family_member_id === 1 ? 'selected' : ''} disabled>1-Male Chief</option>
-                        <option value="2" ${marriedChild.family_member_id === 2 ? 'selected' : ''} disabled>2-Female Chief</option>
-                        <option value="3" ${marriedChild.family_member_id === 3 ? 'selected' : ''} disabled>3-Unmarried Children</option>
-                        <option value="4" ${marriedChild.family_member_id === 4 ? 'selected' : ''}>4-Married Children</option>
+                        <option value="1" ${familyMemberId === 1 ? 'selected' : ''} disabled>1-Male Chief</option>
+                        <option value="2" ${familyMemberId === 2 ? 'selected' : ''} disabled>2-Female Chief</option>
+                        <option value="3" ${familyMemberId === 3 ? 'selected' : ''} disabled>3-Unmarried Children</option>
+                        <option value="4" ${familyMemberId === 4 ? 'selected' : ''}>4-Married Children</option>
                     </select>
                 </div>
             </div>
             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                 <div class="form-group">
-                    <label for="married_child${marriedChild.id}-name">नाम</label>
-                    <input type="text" class="form-control" id="married_child${marriedChild.id}-name" value="${marriedChild.name}">
-                </div>
-            </div>
-              <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                <div class="form-group">
-                    <label for="married_child${marriedChild.id}-address">निवासी</label>
-                    <input type="text" class="form-control" id="married_child${marriedChild.id}-address" value="${marriedChild.married_child_address}">
+                    <label for="married_child${id}-name">नाम</label>
+                    <input type="text" class="form-control" id="married_child${id}-name" value="${name}">
                 </div>
             </div>
             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
                 <div class="form-group">
-                    <label for="married-child${marriedChild.id}-number-id">आईडी नंबर</label>
-                    <input type="text" class="form-control" id="married-child${marriedChild.id}-number-id" value="${marriedChild.married_child_id}" >
+                    <label for="married_child${id}-address">निवासी</label>
+                    <input type="text" class="form-control" id="married_child${id}-address" value="${address}">
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 col-md-4 col-sm-4">
+                <div class="form-group">
+                    <label for="married_child${id}-number-id">आईडी नंबर</label>
+                    <input type="text" class="form-control" id="married_child${id}-number-id" value="${marriedChildId}">
                 </div>
             </div>
             <div class="col-12 col-lg-4 col-md-4 col-sm-4">
@@ -1600,75 +1638,62 @@ function addNewMarriedChild(marriedChild) {
                     <div class="upload__btn-box">
                         <label>
                             <p class="upload__btn bg-info w-25">तश्वीरें अपलोड करो</p>
-                            <input type="file" multiple data-max_length="1" class="upload__inputfile" id="married-child${marriedChild.id}-file" name="_file" onchange="handleImageUpload(event, ${marriedChild.id})">
+                            <input type="file" multiple data-max_length="1" class="upload__inputfile" id="married_child${id}-file" name="_file" onchange="handleImageUpload(event, ${id})">
                         </label>
                     </div>
                     <div class="col-sm-12">
-                        <div class="upload__img-wrap" id="marriedchild${marriedChild.id}" style="display:flex; flex-wrap:wrap;"></div>
+                        <div class="upload__img-wrap" id="marriedchild${id}" style="display:flex; flex-wrap:wrap;"></div>
                     </div>
                 </div>
             </div>
         </div>
-          <div class="mt-2 text-end">
-            <button type="button" class="btn btn-success child-update-btn" data-married-child-id="${marriedChild.id}" onclick="marriedupdate(event)">सुधार</button>
+        <div class="mt-2 text-end">
+            <button type="button" class="btn btn-success child-update-btn" data-married-child-id="${id}" onclick="marriedupdate(event)">सुधार</button>
         </div>
     `;
-    $('#married_children-entries').append(marriedChildEntry);
+
+    document.getElementById('married_children-entries').appendChild(marriedChildEntry);
     ImgUpload(); 
 
-    $(`#marriedchild${marriedChild.id}`).empty();
-        if (marriedChild.self_image) {
-            var imageUrl = 'http://192.168.1.10:8000/uploads/family_member_image/' + marriedChild.self_image.trim();
-            console.log(imageUrl,'rsdtrytuyiuoi');
-            var newCard = `
-                <div class="col-12 col-md-4 col-lg-4 position-relative" style="left:-10px;">
-                    <div class="upload__img-close_button" onclick="removeImage(this);"></div>
-                    <div class="brand-main d-flex box-shadow text-center ">
-                        <a class="weblink text-decoration-none text-dark" title="Image" style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">
-                            <img class="img-fluid" src="${imageUrl}" alt="Image" style="max-height: 100%; max-width: 100%;">
-                        </a>
-                    </div>
+    const marriedChildImageContainer = document.getElementById(`marriedchild${id}`);
+    marriedChildImageContainer.innerHTML = '';
+
+    if (selfImage) {
+        const imageUrl = `http://192.168.1.10:8000/uploads/family_member_image/${selfImage}`;
+        const newCard = `
+            <div class="col-12 col-md-4 col-lg-4 position-relative" style="left:-10px;">
+                <div class="upload__img-close_button" onclick="removeImage(this);"></div>
+                <div class="brand-main d-flex box-shadow text-center">
+                    <a class="weblink text-decoration-none text-dark" title="Image" style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">
+                        <img class="img-fluid" src="${imageUrl}" alt="Image" style="max-height: 100%; max-width: 100%;">
+                    </a>
                 </div>
-            `;
-            $(`#marriedchild${marriedChild.id}`).append(newCard);
-        }
+            </div>
+        `;
+        marriedChildImageContainer.innerHTML = newCard;
+    }
 }
+
 getFamilyDetail();
+
 </script>
-<!-- <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,hi',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
 
-    function setInitialLanguage() {
-      const language = 'hi';
-      const combo = document.querySelector('.goog-te-combo');
-      if (combo) {
-        combo.value = language;
-        combo.dispatchEvent(new Event('change'));
-      }
-    }
+<script>
+        // Function to toggle dropdown content
+        document.getElementById('dropdown-btn').addEventListener('click', function(event) {
+            event.stopPropagation();
+            var dropdownContent = document.getElementById('dropdown-content');
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
 
-    document.addEventListener("DOMContentLoaded", function() {
-      googleTranslateElementInit();
-      setTimeout(setInitialLanguage, 1000);  // Delay to ensure the element is rendered
-    });
-    function removeSelectLanguageOption() {
-      const combo = document.querySelector('.goog-te-combo');
-      if (combo) {
-        combo.remove(0);  // Remove the first option ("Select Language")
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-      setTimeout(removeSelectLanguageOption, 500);  // Delay to ensure the element is rendered
-    });
-</script> -->
-
+        // Hide dropdown content when clicking outside
+        window.addEventListener('click', function(event) {
+            var dropdownContent = document.getElementById('dropdown-content');
+            if (!event.target.matches('#dropdown-btn') && !dropdownContent.contains(event.target)) {
+                dropdownContent.style.display = 'none';
+            }
+        });
+    </script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
